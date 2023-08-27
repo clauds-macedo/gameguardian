@@ -24,4 +24,4 @@ def fetch_prices(platform):
     soup = BeautifulSoup(response.content, "html.parser")
     promo_games = soup.findAll(config["class"]["name"], config["class"]["attrs"])
 
-    return find_games(promo_games)
+    return find_games(promo_games, config)
