@@ -1,20 +1,25 @@
+def safe_extract(element, config_key, config):
+    """Safely extract the attribute defined by config_key from element."""
+    found = element.find(config[config_key]['html_element'], {'class': config[config_key]['class']})
+    return found.text if found else None
+
 def find_games(discount_games, config):
     all_games_discounted = []
     
     for game in discount_games:
         game_info = {}
 
-        title = game.find(config['title']['html_element'], {'class': config['title']['class']}).text
-        game_info['title'] = title
+        # Extracting Title
+        game_info['title'] = safe_extract(game, 'title', config)
 
-        discount_original_price = game.find(config['discount_original_price']['html_element'], {'class': config['discount_original_price']['class']}).text
-        game_info['discount_original_price'] = discount_original_price
+        # Extracting Discount Original Price
+        game_info['discount_original_price'] = safe_extract(game, 'discount_original_price', config)
 
-        discount_pct = game.find(config['discount_pct']['html_element'], {'class': config['discount_pct']['class']}).text
-        game_info['discount_pct'] = discount_pct
+        # Extracting Discount Percentage
+        game_info['discount_pct'] = safe_extract(game, 'discount_pct', config)
 
-        discount_final_price = game.find(config['discount_final_price']['html_element'], {'class': config['discount_final_price']['class']}).text
-        game_info['discount_final_price'] = discount_final_price
+        # Extracting Discount Final Price
+        game_info['discount_final_price'] = safe_extract(game, 'discount_final_price', config)
 
         all_games_discounted.append(game_info)
 
