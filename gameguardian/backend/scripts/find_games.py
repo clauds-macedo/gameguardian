@@ -1,5 +1,4 @@
 def safe_extract(element, config_key, config):
-    """Safely extract the attribute defined by config_key from element."""
     found = element.find(config[config_key]['html_element'], {'class': config[config_key]['class']})
     return found.text if found else None
 

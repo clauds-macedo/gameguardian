@@ -18,11 +18,9 @@ def fetch_prices(platform, page_num=1):
     if "pagination" in config:
         pagination = config["pagination"]
         start_index = int(page_num) * int(pagination["page_size"])
-        print(start_index,  int(page_num) * int(pagination["page_size"]), int(page_num))
         url = f"{pagination['base_url']}&{pagination['start_param']}={start_index}"
     else:
         url = config["url"]
-    # print(url)
     if platform == "steam":
         url = url + "&specials=1"
 
