@@ -6,8 +6,8 @@ steam_config = {
         "count_param": "count",
         "page_size": 50,
     },
-    
     "class": {"name": "a", "attrs": {"class": "search_result_row"}},
+    "img": {"html_element": "img", "attrs": {}},
     "title": {"class": "title", "html_element": "span"},
     "discount_original_price": {
         "class": "discount_original_price",
