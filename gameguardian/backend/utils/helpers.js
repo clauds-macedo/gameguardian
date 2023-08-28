@@ -45,14 +45,13 @@ const getDiscountedGamesData = (games) => {
   const all_games_discounted = [];
 
   for (const game of games) {
+    const discountAmount = game.price.totalPrice.originalPrice - game.price.totalPrice.discountPrice;
+    const discountPercentage = Math.floor(discountAmount / game.price.totalPrice.originalPrice * 100);
+
     const game_info = {
       title: game.title,
       discount_original_price: game.price.totalPrice.originalPrice / 100,
-      discount_pct:
-        game.price.lineOffers[0].appliedRules[0].discountSetting
-          .discountType === "PERCENTAGE"
-          ? game.price.lineOffers[0].appliedRules[0].discountSetting.value / 100
-          : "No Discount Percentage",
+      discount_pct: discountPercentage + "%",
       discount_final_price: game.price.totalPrice.discountPrice / 100,
       link: game.urlSlug
         ? `https://www.epicgames.com/store/pt-BR/p/${game.urlSlug}`
