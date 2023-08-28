@@ -1,11 +1,9 @@
 const { exec } = require("child_process");
 
 exports.fetchPrices = (req, res) => {
-  const platform = req.params.platform;
   const page = req.params.page;
-
   exec(
-    `python3 scripts/main.py ${platform} ${page}`,
+    `python3 scripts/main.py ${page}`,
     (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);
