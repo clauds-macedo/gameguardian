@@ -1,9 +1,13 @@
 const { exec } = require("child_process");
+const shellQuote = require("shell-quote");
 
 exports.fetchPrices = (req, res) => {
+  const platform = req.params.platform;
   const page = req.params.page;
+  
+  const command = `python3 scripts/main.py ${shellQuote.quote([platform])} ${page}`;
   exec(
-    `python3 scripts/main.py ${page}`,
+    command,
     (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);

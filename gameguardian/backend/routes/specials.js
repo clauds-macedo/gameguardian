@@ -3,6 +3,6 @@ const generalController = require("../controllers/general_controller");
 
 const router = express.Router();
 
-router.get("/:page", generalController.fetchPrices);
+router.get("/:platform/:page", generalController.fetchPrices);
 
 module.exports = router;
