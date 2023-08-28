@@ -2,15 +2,29 @@ import sys
 from fetch_prices import fetch_prices
 from configs import platforms
 import json
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
+
+
+def main():
+    if len(sys.argv) > 2:
         platform = sys.argv[1]
         page = sys.argv[2]
         result = fetch_prices(platform, page)
-        if (result):
-            str_result = '\n'.join(map(str, result))
-            print(str_result.encode('utf-8'))
-        else: 
-            print("Nenhum resultado encontrado.")
+        if result:
+            json_result = json.dumps(result, ensure_ascii=True)
+            print(json_result)
+        else:
+            print(
+                json.dumps(
+                    {"error": "Nenhum resultado encontrado."}, ensure_ascii=False
+                )
+            )
     else:
-        print("Nenhuma plataforma especificada.")
+        print(
+            json.dumps(
+                {"error": "Nenhuma plataforma especificada."}, ensure_ascii=False
+            )
+        )
+
+
+if __name__ == "__main__":
+    main()
