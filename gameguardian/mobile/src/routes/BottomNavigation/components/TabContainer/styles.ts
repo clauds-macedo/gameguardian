@@ -4,4 +4,5 @@ export const Container = styled.View`
   align-items: center;
   justify-content: 'center';
   flex-direction: row;
+  background-color: #24282f;
 `;
