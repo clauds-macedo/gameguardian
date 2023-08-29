@@ -12,7 +12,7 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
   navigation,
 }) => {
   return (
-    <TabContainer>
+    <TabContainer variant="bottom">
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const isFocused = state.index === index;

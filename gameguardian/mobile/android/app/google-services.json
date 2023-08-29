@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "477681302326",
+    "project_id": "gameguardian-5c609",
+    "storage_bucket": "gameguardian-5c609.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477681302326:android:b616932fc4872ed253d197",
+        "android_client_info": {
+          "package_name": "com.gameguardian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477681302326-ks9p77uka74d70vqg9g2a675tso7jjll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVg54JPNAxQnbsKa9LBKxb8y3FenhLok8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477681302326-ks9p77uka74d70vqg9g2a675tso7jjll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
