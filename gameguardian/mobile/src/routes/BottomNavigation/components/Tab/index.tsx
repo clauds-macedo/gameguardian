@@ -1,6 +1,7 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
+import colors from '../../../../global/colors';
 import TabContainer from '../TabContainer';
 import {iconsByRouteName} from './utils';
 
@@ -46,7 +47,11 @@ export const TabBarComponent: React.FC<BottomTabBarProps> = ({
             onPress={onPress}
             onLongPress={onLongPress}
             style={{flex: 1, alignItems: 'center'}}>
-            <Icon stroke="#fff" width={32} height={32} />
+            <Icon
+              stroke={isFocused ? colors.primaryButton : '#fff'}
+              width={28}
+              height={28}
+            />
           </TouchableOpacity>
         );
       })}
