@@ -6,7 +6,7 @@ import {IPageTitle} from './types';
 const PageTitle: React.FC<IPageTitle> = ({title = '', subtitle = ''}) => {
   return (
     <Container>
-      <Label>{subtitle}</Label>
+      {subtitle && <Label>{subtitle}</Label>}
       <Label title>{title}</Label>
     </Container>
   );
