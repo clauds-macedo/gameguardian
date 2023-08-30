@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import colors from '../../global/colors';
+import {Text} from 'react-native';
+import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 
 export const News: React.FC = () => {
   return (
-    <View style={{flex: 1, backgroundColor: colors.primaryBackground}}>
-      <Text>News</Text>
-    </View>
+    <GeneralScreenContainer>
+      <Text style={{color: '#fff'}}>oi</Text>
+    </GeneralScreenContainer>
   );
 };
