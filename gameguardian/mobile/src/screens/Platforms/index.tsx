@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-import colors from '../../global/colors';
+import Carousel from './components/Carousel';
+import {Container} from './styles';
+import {data} from './utils';
 
 export const Platforms: React.FC = () => {
   return (
-    <View style={{flex: 1, backgroundColor: colors.primaryBackground}}>
-      <Text>Platforms</Text>
-    </View>
+    <Container>
+      <Carousel data={data} />
+    </Container>
   );
 };
