@@ -1,38 +1,25 @@
 import React from 'react';
-import {FlatList, Image, View} from 'react-native';
+import {CarouselContainer, ItemView, StyledImage} from './styles';
 import type {CarouselProps} from './types';
+import useScroller from './useScroller';
 import {ITEM_SPACING, ITEM_WIDTH} from './utils';
 
 const Carousel: React.FC<CarouselProps> = ({data}) => {
+  const {carouselRef, extendedData, handleScroll} = useScroller({
+    data,
+    ITEM_SPACING,
+    ITEM_WIDTH,
+  });
   return (
-    <FlatList
-      data={data}
+    <CarouselContainer
+      ref={carouselRef}
+      data={extendedData}
+      onScroll={handleScroll}
       renderItem={({item}) => (
-        <View
-          style={{
-            width: ITEM_WIDTH,
-            paddingHorizontal: ITEM_SPACING / 2,
-            justifyContent: 'center',
-          }}>
-          <Image
-            resizeMode="cover"
-            source={{uri: item}}
-            style={{
-              width: '100%',
-              height: '85%',
-              alignSelf: 'center',
-              borderRadius: 32,
-            }}
-          />
-        </View>
+        <ItemView>
+          <StyledImage resizeMode="cover" source={{uri: item}} />
+        </ItemView>
       )}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      snapToInterval={ITEM_WIDTH + ITEM_SPACING}
-      decelerationRate="fast"
-      contentContainerStyle={{
-        paddingRight: ITEM_SPACING,
-      }}
     />
   );
 };
