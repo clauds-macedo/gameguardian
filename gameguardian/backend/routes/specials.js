@@ -1,8 +1,9 @@
-const express = require("express");
-const generalController = require("../controllers/general_controller");
+import { Router } from "express";
 
-const router = express.Router();
+import generalController from "../controllers/general_controller.js";
 
-router.get("/:platform/:page", generalController.fetchPrices);
+const specialsRouter = Router();
 
-module.exports = router;
+specialsRouter.get("/:platform/:page", generalController.fetchPrices);
+
+export default specialsRouter;

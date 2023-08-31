@@ -1,20 +1,20 @@
-// Libs
-const express = require("express");
-const bodyParser = require("body-parser");
-// Routes
-const specialsRoute = require("./routes/specials");
-const steamRoute = require("./routes/steam");
-const epicRoute = require("./routes/epic");
-// App
-const app = express();
+import express from "express";
+import routes from "./routes/routes.js";
+
 const port = 3000;
 
-app.use(bodyParser.json());
+class App {
+  constructor () {
+    this.server = express();
+    this.server.use(routes);
+    this.server.use(express.json());
+  }
 
-app.use("/specials", specialsRoute);
-app.use("/steam", steamRoute);
-app.use("/epic", epicRoute);
+  listen() {
+    this.server.listen(port, () => {
+      console.log(`Server is running at http://localhost:${port}`);
+    });
+  }
+}
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+export default new App();

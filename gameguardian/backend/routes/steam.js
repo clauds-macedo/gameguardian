@@ -1,8 +1,9 @@
-const express = require("express");
-const generalController = require("../controllers/general_controller");
+import { Router } from "express";
 
-const router = express.Router();
+import generalController from "../controllers/general_controller.js";
 
-router.get("/:page", generalController.fetchPrices);
+const steamRouter = Router();
 
-module.exports = router;
+steamRouter.get("/:page", generalController.fetchPrices);
+
+export default steamRouter;
