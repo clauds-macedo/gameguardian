@@ -27,7 +27,7 @@ export const Card: React.FC<CardProps> = ({
       <Heart
         width={32}
         height={32}
-        style={{position: 'absolute', right: 10, top: 10}}
+        style={{position: 'absolute', right: 0, top: 5}}
         stroke={colors.primaryButton}
         fill={favourite ? colors.primaryButton : 'transparent'}
       />

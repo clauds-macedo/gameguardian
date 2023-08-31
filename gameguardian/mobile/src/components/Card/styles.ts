@@ -7,7 +7,7 @@ export const Container = styled.View`
   flex-direction: row;
   border-radius: 5px;
   align-items: center;
-  width: ${styles.screenFullWidth - styles.defaultApplicationPadding}px;
+  width: ${styles.screenFullWidth - styles.defaultApplicationPadding * 2}px;
 `;
 
 export const StyledImage = styled.Image`
@@ -26,6 +26,7 @@ export const Title = styled.Text`
   font-family: ${fonts.bold};
   color: ${colors.primaryText};
   width: 80%;
+  margin-bottom: 8px;
 `;
 
 export const OldPrice = styled.Text`

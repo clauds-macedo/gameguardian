@@ -14,6 +14,7 @@ const Deals = () => {
             oldPrice: '111',
             title: "I'm looking for 3024 people",
             uri: 'https://i.ytimg.com/vi/lDK9QqIzhwk/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLAOQEvaLCnOgthQo-OFTJ7p5Mw_TA',
+            favourite: true,
           },
         ]}
         renderItem={({item}) => {
