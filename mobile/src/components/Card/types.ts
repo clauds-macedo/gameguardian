@@ -4,4 +4,6 @@ export interface CardProps {
   oldPrice: string;
   discountedPrice: string;
   favourite: boolean;
+  mb?: number;
+  mt?: number;
 }

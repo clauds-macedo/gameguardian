@@ -8,4 +8,5 @@ export const Container = styled.View`
   justify-content: center;
   background-color: ${colors.primaryBackground};
   width: ${styles.screenFullWidth}px;
+  padding: 0 ${styles.defaultApplicationPadding}px;
 `;

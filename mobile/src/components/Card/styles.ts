@@ -1,13 +1,19 @@
 import styled from 'styled-components/native';
 import colors from '../../global/colors';
 import fonts from '../../global/fonts';
-import styles from '../../global/styles';
+import {CardProps} from './types';
 
-export const Container = styled.View`
+export const Container = styled.View<Pick<CardProps, 'mb' | 'mt'>>`
   flex-direction: row;
   border-radius: 5px;
   align-items: center;
-  width: ${styles.screenFullWidth - styles.defaultApplicationPadding * 2}px;
+  margin: ${({mb, mt}) => `${mt ?? 0}px 0 ${mb ?? 0}px 0`};
+`;
+
+export const ButtonContainer = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
 `;
 
 export const StyledImage = styled.Image`

@@ -7,6 +7,7 @@ export default {
     news: 'Notícias',
     deals: 'Promoções',
     support: 'Apoie-nos',
+    mostAccessed: 'Promoções mais acessadas do dia',
   },
   en: {
     explore: 'Explore',
@@ -16,5 +17,6 @@ export default {
     news: 'News',
     deals: 'Deals',
     support: 'Support Us',
+    mostAccessed: 'Most accessed deals of the day',
   },
 };

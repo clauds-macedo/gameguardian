@@ -18,12 +18,11 @@ export const Item = styled.View`
   height: 200px;
   justify-content: center;
   align-items: center;
-  background-color: lightblue;
 `;
 
 export const IndicatorContainer = styled.View`
-  flexdirection: row;
-  margintop: 20px;
+  flex-direction: row;
+  margin-top: 20px;
 `;
 
 export const Indicator = styled(Animated.View)<{selected?: boolean}>`
