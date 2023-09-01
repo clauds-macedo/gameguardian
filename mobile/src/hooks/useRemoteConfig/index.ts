@@ -1,8 +1,9 @@
 import {remoteConfig} from './config';
 
 const useRemoteConfig = () => {
-  const {getValue} = remoteConfig;
-  const getConfigValue = (key: string) => {
+  const {getValue, fetch, getAll} = remoteConfig;
+  const getConfigValue = async (key: string) => {
+    await fetch();
     const value = getValue(key);
     return value.asString();
   };

@@ -1,15 +1,18 @@
 import {
   NavigationProp,
   ParamListBase,
+  RouteProp,
   useNavigation,
+  useRoute,
 } from '@react-navigation/native';
-import {TabParamList} from './types';
+import type {NavigationParamList} from './types';
 
 const useAppRoute = () => {
   const navigation =
-    useNavigation<NavigationProp<ParamListBase | TabParamList>>();
+    useNavigation<NavigationProp<ParamListBase | NavigationParamList>>();
+  const route = useRoute<RouteProp<NavigationParamList>>();
 
-  return navigation;
+  return {navigation, route};
 };
 
 export default useAppRoute;

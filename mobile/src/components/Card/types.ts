@@ -4,6 +4,7 @@ export interface CardProps {
   oldPrice: string;
   discountedPrice: string;
   favourite: boolean;
+  onCardPress?: () => void;
   mb?: number;
   mt?: number;
 }

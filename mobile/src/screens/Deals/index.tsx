@@ -4,13 +4,17 @@ import {Card} from '../../components/Card';
 import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 import PageTitle from '../../components/PageTitle';
 import useLanguage from '../../hooks/useLanguage';
-
+import useAppRoute from '../../routes/hooks/useAppRoute';
+import {getSubtitle} from './utils';
 const Deals = () => {
   const {languageStrings} = useLanguage();
+  const {route} = useAppRoute();
+  const {name, params} = route;
+  console.log(params);
   return (
     <GeneralScreenContainer>
       <PageTitle
-        title={languageStrings.mostAccessed}
+        title={getSubtitle(name, params?.platform ?? '')}
         subtitle={languageStrings.deals}
       />
       <FlatList

@@ -22,6 +22,7 @@ export const Card: React.FC<CardProps> = ({
   favourite,
   mb,
   mt,
+  onCardPress,
 }) => {
   const {language} = useLanguage();
   const currency = language === 'en' ? '$' : 'R$';
@@ -37,7 +38,7 @@ export const Card: React.FC<CardProps> = ({
           fill={favourite ? colors.primaryButton : 'transparent'}
         />
       </TouchableOpacity>
-      <ButtonContainer activeOpacity={0.8}>
+      <ButtonContainer activeOpacity={0.8} onPress={onCardPress}>
         <StyledImage source={{uri}} />
         <TextContainer>
           <Title>{title}</Title>

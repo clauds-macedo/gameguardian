@@ -1,6 +1,7 @@
-export type TabParamList = {
+export type NavigationParamList = {
   Home: undefined;
   Alerts: undefined;
   Deals: undefined;
   Profile: undefined;
+  PlatformDeals: {platform: string};
 };

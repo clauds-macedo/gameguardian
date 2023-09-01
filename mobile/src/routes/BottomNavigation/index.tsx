@@ -6,7 +6,6 @@ import {TabBarComponent} from './components/Tab';
 
 const Tab = createBottomTabNavigator();
 const Test = () => <Text>Test</Text>;
-const Test2 = () => <Text>Test2</Text>;
 
 export const BottomTabNavigation = () => {
   return (
@@ -19,7 +18,6 @@ export const BottomTabNavigation = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Alerts" component={Test} />
       <Tab.Screen name="Deals" component={Deals} />
-      <Tab.Screen name="Profile" component={Test2} />
     </Tab.Navigator>
   );
 };
