@@ -1,6 +1,6 @@
 import {Animated} from 'react-native';
 
 export interface CarouselProps {
-  data: string[];
+  data: {name: string; src: string}[];
   scrollX: Animated.Value;
 }
