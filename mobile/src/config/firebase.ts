@@ -1,3 +1,4 @@
+import firebase from '@react-native-firebase/app';
 const firebaseConfig = {
   apiKey: 'AIzaSyBVRVy4tQMitn7Ro60JFBaxSCE1obX099U',
   authDomain: 'gameguardian-5c609.firebaseapp.com',
@@ -8,3 +9,5 @@ const firebaseConfig = {
   appId: '1:477681302326:web:859beb072d9d505853d197',
   measurementId: 'G-CDSCWT58EG',
 };
+
+export {firebase, firebaseConfig};

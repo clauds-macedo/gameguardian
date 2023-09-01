@@ -3,14 +3,16 @@ from bs4 import BeautifulSoup
 import re
 
 def fetch_prices(platform, page_num=1):
-    response = requests.get("https://store.steampowered.com/search/results/?query&start=50&count=300&dynamic_data=&sort_by=_ASC&ignore_preferences=1&supportedlang=portuguese&snr=1_7_7_2300_7&specials=1&infinite=1")
+    response = requests.get("https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1")
     
     content_type = response.headers.get('Content-Type')
+    print(content_type)
     app_id_pattern = re.compile(r'/app/(\d+)')
     
     if "html" in content_type:
         soup = BeautifulSoup(response.content, "html.parser")
         promo_games_with_app = [promo for promo in soup.findAll("a", href=True) if "app" in promo["href"]]
+        print(promo_games_with_app)
         id_list = []
         for promo in promo_games_with_app:
             match = app_id_pattern.search(promo["href"])
