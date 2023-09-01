@@ -1,8 +1,10 @@
-export function safeExtract(obj, key, config) {
+import type { IGameInfo, ISafeObject } from "./types";
+
+export function safeExtract({ config, key, obj }: ISafeObject) {
   return obj[key] ? obj[key] : config[key];
 }
 
-export function safeExtractImage(obj, key, config) {
+export function safeExtractImage({ config, key, obj }: ISafeObject) {
   return obj[key] ? obj[key].url : config[key];
 }
 
@@ -12,7 +14,7 @@ export const buildEpicGamesURL = (queryParams) => {
     category: "games%2Fedition%2Fbase",
     count: 400,
     country: "BR",
-    effectiveDate: "[,2023-08-28T11:14:36.072Z]",
+    effectiveDate: `[,${new Date().toISOString()}]`,
     keywords: "",
     locale: "pt-BR",
     onSale: true,
@@ -42,7 +44,7 @@ export const buildEpicGamesURL = (queryParams) => {
   
 
 export const getDiscountedGamesData = (games) => {
-  const all_games_discounted = [];
+  const all_games_discounted: IGameInfo[] = [];
 
   for (const game of games) {
     const discountAmount = game.price.totalPrice.originalPrice - game.price.totalPrice.discountPrice;

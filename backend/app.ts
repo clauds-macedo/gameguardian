@@ -1,9 +1,10 @@
-import express from "express";
+import express, { Express } from "express";
 import routes from "./routes/routes.js";
 
 const port = 3000;
 
 class App {
+  server: Express;
   constructor () {
     this.server = express();
     this.server.use(routes);
