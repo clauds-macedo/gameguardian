@@ -1,8 +1,5 @@
 {
   "plugins": [
-<<<<<<< HEAD:gameguardian/mobile/.babelrc
-    ["module:react-native-dotenv"]
-=======
     ["module:react-native-dotenv", {
       "envName": "APP_ENV",
       "moduleName": "@env",
@@ -13,6 +10,5 @@
       "allowUndefined": true,
       "verbose": false
     }]
->>>>>>> 5c7b28a6203d66a81eea63fe53f7409004045399:mobile/.babelrc
   ]
 }
