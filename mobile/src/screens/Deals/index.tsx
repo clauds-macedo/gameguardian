@@ -8,9 +8,7 @@ import useAppRoute from '../../routes/hooks/useAppRoute';
 import {getSubtitle} from './utils';
 const Deals = () => {
   const {languageStrings} = useLanguage();
-  const {route} = useAppRoute();
-  const {name, params} = route;
-  console.log(params);
+  const {name, params} = useAppRoute().route;
   return (
     <GeneralScreenContainer>
       <PageTitle
