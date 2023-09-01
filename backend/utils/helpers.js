@@ -1,12 +1,12 @@
-function safeExtract(obj, key, config) {
+export function safeExtract(obj, key, config) {
   return obj[key] ? obj[key] : config[key];
 }
 
-function safeExtractImage(obj, key, config) {
+export function safeExtractImage(obj, key, config) {
   return obj[key] ? obj[key].url : config[key];
 }
 
-const buildEpicGamesURL = (queryParams) => {
+export const buildEpicGamesURL = (queryParams) => {
   const urlParams = {
     allowCountries: "BR",
     category: "games%2Fedition%2Fbase",
@@ -41,7 +41,7 @@ const buildEpicGamesURL = (queryParams) => {
 };
   
 
-const getDiscountedGamesData = (games) => {
+export const getDiscountedGamesData = (games) => {
   const all_games_discounted = [];
 
   for (const game of games) {
@@ -65,11 +65,4 @@ const getDiscountedGamesData = (games) => {
   }
 
   return all_games_discounted;
-};
-
-module.exports = {
-  safeExtract,
-  safeExtractImage,
-  getDiscountedGamesData,
-  buildEpicGamesURL,
 };

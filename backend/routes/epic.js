@@ -1,9 +1,10 @@
-const express = require("express");
-const epicController = require("../controllers/epic_controller");
+import { Router } from "express";
 
-const router = express.Router();
+import epicController from "../controllers/epic_controller.js";
 
-router.get("/freeGames", epicController.fetchFreeGames);
-router.get("/specials", epicController.getDiscountedGames);
+const epicRouter = Router();
 
-module.exports = router;
+epicRouter.get("/freeGames", epicController.fetchFreeGames);
+epicRouter.get("/specials", epicController.getDiscountedGames);
+
+export default epicRouter;
