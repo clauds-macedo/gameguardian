@@ -1,8 +1,9 @@
 import { exec } from "child_process";
 import shellQuote from "shell-quote";
+import { Request, Response } from 'express'
 
 class GeneralController {
-  fetchPrices = (req, res) => {
+  fetchPrices = (req: Request, res: Response) => {
     const platform = req.params.platform;
     const page = req.params.page;
     

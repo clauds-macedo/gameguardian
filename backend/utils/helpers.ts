@@ -8,7 +8,7 @@ export function safeExtractImage({ config, key, obj }: ISafeObject) {
   return obj[key] ? obj[key].url : config[key];
 }
 
-export const buildEpicGamesURL = (queryParams) => {
+export const buildEpicGamesURL = (queryParams: any) => {
   const urlParams = {
     allowCountries: "BR",
     category: "games%2Fedition%2Fbase",
@@ -43,7 +43,7 @@ export const buildEpicGamesURL = (queryParams) => {
 };
   
 
-export const getDiscountedGamesData = (games) => {
+export const getDiscountedGamesData = (games: any) => {
   const all_games_discounted: IGameInfo[] = [];
 
   for (const game of games) {
@@ -59,7 +59,7 @@ export const getDiscountedGamesData = (games) => {
         ? `https://www.epicgames.com/store/pt-BR/p/${game.urlSlug}`
         : "#",
       image_src: game.keyImages.find(
-        (img) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
+        (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
       ).url,
     };
 

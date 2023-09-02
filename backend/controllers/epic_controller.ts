@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getDiscountedGamesData, buildEpicGamesURL } from "../utils/helpers.js";
+import { Request, Response } from 'express'
 
 class EpicController {
-  fetchFreeGames = async (_, res) => {
+  fetchFreeGames = async (req: Request, res: Response) => {
     try {
       const response = await axios.get(
         "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
@@ -15,7 +16,7 @@ class EpicController {
     }
   };
 
-  getDiscountedGames = async (req, res) => {
+  getDiscountedGames = async (req: Request, res: Response) => {
     try {
       const queryParams = req.query;
       const url = buildEpicGamesURL(queryParams);

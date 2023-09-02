@@ -130,3 +130,6 @@ yarn.lock
 .yarn/install-state.gz
 .pnp.*
 yarn.lock
+
+# Files
+serviceAccountKey.ts
