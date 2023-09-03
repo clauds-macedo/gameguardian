@@ -8,6 +8,8 @@ export default {
     deals: 'Promoções',
     support: 'Apoie-nos',
     mostAccessed: 'Mais acessadas do dia',
+    hello: 'Olá!',
+    settings: 'Suas configurações',
   },
   en: {
     explore: 'Explore',
@@ -18,5 +20,7 @@ export default {
     deals: 'Deals',
     support: 'Support Us',
     mostAccessed: 'Most accessed of the day',
+    hello: 'Hello!',
+    settings: 'Your settings',
   },
 };
