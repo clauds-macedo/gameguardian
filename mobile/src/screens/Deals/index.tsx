@@ -3,12 +3,14 @@ import {FlatList} from 'react-native';
 import {Card} from '../../components/Card';
 import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 import PageTitle from '../../components/PageTitle';
+import useGameClicks from '../../hooks/useGameClicks';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import {getSubtitle} from './utils';
 const Deals = () => {
   const {languageStrings} = useLanguage();
   const {name, params} = useAppRoute().route;
+  const {registerClick} = useGameClicks();
   return (
     <GeneralScreenContainer>
       <PageTitle
@@ -61,7 +63,14 @@ const Deals = () => {
           },
         ]}
         renderItem={({item}) => {
-          return <Card {...item} mt={8} mb={8} />;
+          return (
+            <Card
+              {...item}
+              mt={8}
+              mb={8}
+              onCardPress={() => registerClick(item.title)}
+            />
+          );
         }}
         style={{
           width: '100%',

@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {remoteConfig} from './config';
+import {remoteConfig} from '../../config/remote-config';
 
 const useRemoteConfig = () => {
   const {getValue, fetch, getAll, fetchAndActivate} = remoteConfig;
@@ -7,6 +7,7 @@ const useRemoteConfig = () => {
   const fetchRemotely = async () => {
     fetchAndActivate();
   };
+
   const getConfigValue = async (key: string) => {
     getAll();
     await fetch();
