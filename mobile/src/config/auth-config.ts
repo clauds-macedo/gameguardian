@@ -48,7 +48,18 @@ export const authConfig = {
   },
 
   // Obter o usuário atualmente autenticado
-  getCurrentUser: (): FirebaseAuthTypes.User | null => {
-    return auth().currentUser;
+  isLoggedIn: (): boolean => {
+    return MMKV.contains('@user');
+  },
+
+  // Obtém o usuário atual guardado no storage
+  getCurrentUser: () => {
+    if (!authConfig.isLoggedIn()) {
+      return;
+    }
+    const user: FirebaseAuthTypes.User = JSON.parse(
+      MMKV.getString('@user') ?? '',
+    );
+    return user;
   },
 };

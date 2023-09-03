@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Heart} from 'react-native-feather';
+import {authConfig} from '../../config/auth-config';
 import colors from '../../global/colors';
 import useLanguage from '../../hooks/useLanguage';
 import {
@@ -26,18 +27,21 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const {language} = useLanguage();
   const currency = language === 'en' ? '$' : 'R$';
+  const {isLoggedIn} = authConfig;
   return (
     <Container mb={mb} mt={mt}>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={{position: 'absolute', right: 0, top: 5}}>
-        <Heart
-          width={32}
-          height={32}
-          stroke={colors.primaryButton}
-          fill={favourite ? colors.primaryButton : 'transparent'}
-        />
-      </TouchableOpacity>
+      {isLoggedIn() && (
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{position: 'absolute', right: 0, top: 5}}>
+          <Heart
+            width={32}
+            height={32}
+            stroke={colors.primaryButton}
+            fill={favourite ? colors.primaryButton : 'transparent'}
+          />
+        </TouchableOpacity>
+      )}
       <ButtonContainer activeOpacity={0.8} onPress={onCardPress}>
         <StyledImage source={{uri}} />
         <TextContainer>
