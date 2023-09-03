@@ -3,16 +3,18 @@ import {Animated} from 'react-native';
 import {ExpandingDot} from 'react-native-animated-pagination-dots';
 import colors from '../../global/colors';
 import Carousel from './components/Carousel';
+import useGetPlatforms from './hooks/useGetPlatforms';
 import {Container} from './styles';
-import {platformData} from './utils';
 
 export const Platforms: React.FC = () => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
+  const {platforms} = useGetPlatforms();
+
   return (
     <Container>
-      <Carousel data={platformData} scrollX={scrollX} />
+      <Carousel data={platforms} scrollX={scrollX} />
       <ExpandingDot
-        data={platformData}
+        data={platforms}
         expandingDotWidth={30}
         scrollX={scrollX}
         inActiveDotOpacity={0.6}
