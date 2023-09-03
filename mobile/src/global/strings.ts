@@ -10,6 +10,8 @@ export default {
     mostAccessed: 'Mais acessadas do dia',
     hello: 'Olá!',
     settings: 'Suas configurações',
+    favourites: 'Favoritos',
+    contact: 'Contate-nos',
   },
   en: {
     explore: 'Explore',
