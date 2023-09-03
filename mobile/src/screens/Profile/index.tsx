@@ -17,7 +17,12 @@ const Profile: React.FC = () => {
       />
       <UserProfile />
       {options.map(({icon, name}) => (
-        <OptionConfig key={name} icon={icon} name={name} />
+        <OptionConfig
+          key={name}
+          icon={icon}
+          name={name}
+          navigateScreen={name[0].toUpperCase() + name.substring(1)}
+        />
       ))}
       <MainButton />
     </GeneralScreenContainer>
