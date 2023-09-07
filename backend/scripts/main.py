@@ -1,14 +1,21 @@
 import sys
-from fetch_prices import fetch_prices
+from fetch_promo_games_ids_steam import fetch_promo_games_ids_steam 
 from configs import platforms
 import json
 
+STEAM_URL = (
+    "https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1"
+)
+
 
 def main():
-    if len(sys.argv) > 2:
+    if len(sys.argv) >= 2:
+        url = ""
         platform = sys.argv[1]
-        page = sys.argv[2]
-        result = fetch_prices(platform, page)
+        if platform == "STEAM":
+            url = STEAM_URL
+
+        result = fetch_promo_games_ids_steam()
         if result:
             json_result = json.dumps(result, ensure_ascii=True)
             print(json_result)

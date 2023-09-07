@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-def fetch_prices(platform, page_num=1):
+def fetch_promo_games_ids_steam() -> list[str]:
     response = requests.get("https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1")
     
     content_type = response.headers.get('Content-Type')
@@ -13,7 +13,7 @@ def fetch_prices(platform, page_num=1):
         soup = BeautifulSoup(response.content, "html.parser")
         promo_games_with_app = [promo for promo in soup.findAll("a", href=True) if "app" in promo["href"]]
         # print(promo_games_with_app)
-        id_list = []
+        id_list:list[str] = []
         for promo in promo_games_with_app:
             match = app_id_pattern.search(promo["href"])
             if match:
@@ -27,12 +27,10 @@ def fetch_prices(platform, page_num=1):
             soup = BeautifulSoup(data['results_html'], "html.parser")
             
             promo_games_with_app = [promo for promo in soup.findAll("a", href=True) if "app" in promo["href"]]
-            id_list = []
+            id_list:list[str] = []
             for promo in promo_games_with_app:
                 match = app_id_pattern.search(promo["href"])
                 if match:
                     app_id = match.group(1)
                     id_list.append(app_id)
             return id_list
-
-fetch_prices("steam")

@@ -1,6 +1,5 @@
 import { Router } from "express";
 
-import generalController from "../controllers/general_controller.js";
 import steam_controller from "../controllers/steam_controller.js";
 
 const steamRouter = Router();

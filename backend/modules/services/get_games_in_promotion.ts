@@ -1,12 +1,9 @@
 import { promisify } from "util";
-import shellQuote from "shell-quote";
 
 const exec = promisify(require("child_process").exec);
 
-export const parsePage = async (platform: string, page: string): Promise<string[]> => {
-  const command = `python3 scripts/main.py ${shellQuote.quote([
-    platform,
-  ])} ${page}`;
+export const getGamesInPromotion = async (platform: string): Promise<string[]> => {
+  const command = `python3 scripts/main.py ${platform}`;
 
   try {
     const listOutput = await exec(command);

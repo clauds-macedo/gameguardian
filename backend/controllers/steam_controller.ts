@@ -1,14 +1,11 @@
-import { parsePage } from "../modules/services/parse_page";
+import { getGamesInPromotion } from "../modules/services/get_games_in_promotion";
 import { Request, Response } from "express";
 import axios from "axios";
-
-const steamPromotionsPage =
-  "https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1";
 
 const gameDetailsPage =
   "https://store.steampowered.com/api/appdetails?cc=br&l=pt&appids=";
 
-interface gameResponse {
+interface GameResponse {
   title: string;
   description: string;
   screenshots: {
@@ -20,25 +17,27 @@ interface gameResponse {
 
 class SteamController {
   fetchPromotions = async (req: Request, res: Response) => {
-    const platform = "steam";
+    try {
+      const ids = await getGamesInPromotion("steam");
 
-    const ids = await parsePage(platform, steamPromotionsPage);
+      const response: GameResponse[] = [];
+      for (const id of ids) {
+        const respData = (await axios.get(gameDetailsPage + id)).data;
 
-    const response: gameResponse[] = [];
-    for (const id of ids) {
-      const respData = (await axios.get(gameDetailsPage + id)).data;
-
-      if (respData[id].success) {
-        const { data } = respData[id];
-        response.push({
-          title: data.name,
-          description: data.detailed_description,
-          screenshots: data.screenshots,
-        });
+        if (respData[id].success) {
+          const { data } = respData[id];
+          response.push({
+            title: data.name,
+            description: data.detailed_description,
+            screenshots: data.screenshots,
+          });
+        }
       }
-    }
 
-    return res.status(200).json(response);
+      return res.status(200).json(response);
+    } catch (error) {
+      return res.status(500).json({ error: "Erro ao requisitar à Steam." });
+    }
   };
 }
 
