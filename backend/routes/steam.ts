@@ -1,9 +1,10 @@
 import { Router } from "express";
 
 import generalController from "../controllers/general_controller.js";
+import steam_controller from "../controllers/steam_controller.js";
 
 const steamRouter = Router();
 
-steamRouter.get("/:page", generalController.fetchPrices);
+steamRouter.get("/promotions", steam_controller.fetchPromotions);
 
 export default steamRouter;
