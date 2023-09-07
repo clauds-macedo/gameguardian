@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getDiscountedGamesData, buildEpicGamesURL } from "../utils/helpers.js";
 import { Request, Response } from 'express'
+import { ref } from "../config/firebase.js";
 
 class EpicController {
   fetchFreeGames = async (req: Request, res: Response) => {

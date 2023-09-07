@@ -24,5 +24,7 @@ export default {
     mostAccessed: 'Most accessed of the day',
     hello: 'Hello!',
     settings: 'Your settings',
+    favourites: 'Favourites',
+    contact: 'Contact us',
   },
 };

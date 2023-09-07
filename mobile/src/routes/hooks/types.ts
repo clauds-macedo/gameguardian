@@ -4,4 +4,6 @@ export type NavigationParamList = {
   Deals: undefined;
   Profile: undefined;
   PlatformDeals: {platform: string};
+  Login: undefined;
+  Favourites: undefined;
 };
