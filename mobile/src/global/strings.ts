@@ -15,6 +15,7 @@ export default {
     signIn: 'Fazer login',
     signUp: 'Registrar',
     signOut: 'Desconectar',
+    registerCtaLabel: 'Novo por aqui? Registre-se',
   },
   en: {
     explore: 'Explore',
@@ -32,5 +33,6 @@ export default {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     signOut: 'Sign Out',
+    registerCtaLabel: 'New here? Sign up',
   },
 };

@@ -40,9 +40,8 @@ export const ButtonText = styled.Text`
 export const ImageBackground = styled.ImageBackground`
   position: absolute;
   flex: 1;
-  height: ${Dimensions.get("screen").height}px;
+  height: ${Dimensions.get('screen').height}px;
   width: ${Dimensions.get('screen').width}px;
   top: 0;
-  opacity: 0.09;
-  background-color: rgba(0,0,0,0.5);
+  opacity: 0.045;
 `;

@@ -15,7 +15,7 @@ export const Circles: React.FC<ICircleProps> = props => {
       viewBox="0 0 221 221"
       fill="none"
       style={[
-        {position: 'absolute', ...positionProps, opacity: 0.6},
+        {position: 'absolute', ...positionProps, opacity: 0.3},
         props.style,
       ]}>
       <Circle cx="110.5" cy="110.5" r="109.5" stroke="#393F4B" />
