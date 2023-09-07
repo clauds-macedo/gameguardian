@@ -8,3 +8,8 @@ export const SLabel = styled.Text<Pick<ILabel, 'title'>>`
   color: ${({title}) => (title ? colors.primaryText : colors.secondaryText)};
   font-family: ${({title}) => (title ? fonts.bold : fonts.regular)};
 `;
+
+export const SErrorLabel = styled.Text`
+  color: ${colors.secondaryButton};
+  font-family: ${fonts.bold};
+`;
