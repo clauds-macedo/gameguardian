@@ -7,10 +7,12 @@ import UserProfile from '../../components/UserProfile';
 import useLanguage from '../../hooks/useLanguage';
 import {options} from './utils';
 import {authConfig} from '../../config/auth-config';
+import useAppRoute from '../../routes/hooks/useAppRoute';
 
 const Profile: React.FC = () => {
   const {languageStrings} = useLanguage();
   const {isLoggedIn} = authConfig;
+  const {navigate} = useAppRoute().navigation
   return (
     <GeneralScreenContainer>
       <PageTitle
@@ -30,6 +32,9 @@ const Profile: React.FC = () => {
         variant='primary'
         label={isLoggedIn() ? languageStrings.signOut : languageStrings.signIn}
         style={{position: 'absolute', bottom: 16}}
+        onPressButton={() => {
+          navigate("Login")
+        }}
       />
     </GeneralScreenContainer>
   );
