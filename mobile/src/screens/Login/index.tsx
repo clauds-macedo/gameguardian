@@ -17,12 +17,6 @@ const Login: React.FC = () => {
       <Circles style={{top: 0, position: 'absolute', opacity: 0.5}} />
       <ImageBackground
         source={require('./assets/ellie.jpg')}
-        style={{
-          opacity: 0.09,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          position: 'absolute',
-          height: Dimensions.get('screen').height,
-        }}
         blurRadius={1}
       />
       <FormContainer>

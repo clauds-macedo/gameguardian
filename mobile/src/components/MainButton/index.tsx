@@ -1,21 +1,21 @@
 import React from 'react';
-import {Dimensions, Text, TouchableOpacity} from 'react-native';
-import useAppRoute from '../../routes/hooks/useAppRoute';
+import {IMainButton} from './types';
+import {ButtonText, StyledButton} from './styles';
 
-const MainButton: React.FC = () => {
-  const {navigate} = useAppRoute().navigation;
+const MainButton: React.FC<IMainButton> = ({
+  variant = 'primary',
+  icon,
+  label,
+  mb,
+  mt,
+  onPressButton,
+  style
+}) => {
   return (
-    <TouchableOpacity
-      style={{
-        width: Dimensions.get('screen').width * 0.9,
-        height: 57,
-        backgroundColor: '#FF5555',
-      }}
-      onPress={() => {
-        navigate('Login');
-      }}>
-      <Text>MainButton:React.FC</Text>
-    </TouchableOpacity>
+    <StyledButton variant={variant} mb={mb} mt={mt} onPress={onPressButton} style={{...style}}>
+      {icon && icon}
+      <ButtonText>{label}</ButtonText>
+    </StyledButton>
   );
 };
 
