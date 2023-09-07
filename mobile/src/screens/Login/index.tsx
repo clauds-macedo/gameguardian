@@ -1,4 +1,7 @@
 import React from 'react';
+import Input from '../../components/Input';
+import Label from '../../components/PageTitle/components/Label';
+import {Circles} from './components/Circles';
 import {
   ButtonContainer,
   ButtonText,
@@ -7,22 +10,16 @@ import {
   ImageBackground,
   StyledButton,
 } from './styles';
-import {Dimensions} from 'react-native';
-import {Circles} from './components/Circles';
-import Label from '../../components/PageTitle/components/Label';
-import Input from '../../components/Input';
 const Login: React.FC = () => {
   return (
     <Container>
-      <Circles style={{top: 0, position: 'absolute', opacity: 0.5}} />
-      <ImageBackground
-        source={require('./assets/ellie.jpg')}
-        blurRadius={1}
-      />
+      <Circles sideX="left" sideY="top" />
+      <Circles style={{bottom: 40, right: 0}} />
+      <ImageBackground source={require('./assets/ellie.jpg')} blurRadius={1} />
       <FormContainer>
         <Label title>Login</Label>
-        <Input placeholder='E-mail' mt={16}/>
-        <Input placeholder='Password'/>
+        <Input placeholder="E-mail" mt={16} />
+        <Input placeholder="Password" />
       </FormContainer>
       <ButtonContainer>
         <StyledButton>
