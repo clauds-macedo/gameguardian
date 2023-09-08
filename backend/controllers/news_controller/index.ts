@@ -1,17 +1,18 @@
 import axios from "axios";
 import { load } from "cheerio";
 import { Response, Request } from "express";
+import type { NewsItem } from "./types"
 
 class NewsController {
-  private async fetchNewsFromUrl(url: string): Promise<any[]> {
+  private async fetchNewsFromUrl(url: string): Promise<NewsItem[]> {
     const { data } = await axios.get(url);
     const $ = load(data);
-    const newsList: any[] = [];
+    const newsList: NewsItem[] = [];
 
     $("article").each((_, element) => {
       const title = $(element).find("h2").text();
-      const link = $(element).find("a").first().attr("href");
-      const image = $(element).find("figure").find("img").attr("data-lazy-src") || $(element).find("figure").find("img").attr("src");
+      const link = $(element).find("a").first().attr("href") ?? "";
+      const image = ($(element).find("figure").find("img").attr("data-lazy-src") || $(element).find("figure").find("img").attr("src")) ?? "";
 
       if (title) {
         newsList.push({
@@ -25,7 +26,7 @@ class NewsController {
     return newsList;
   }
 
-  private async fetchAllNewsFromUrls(): Promise<any[]> {
+  private async fetchAllNewsFromUrls(): Promise<NewsItem[]> {
     // pegar apenas as notícias mais recentes
     const urls = [
         "https://www.adrenaline.com.br/games/",
