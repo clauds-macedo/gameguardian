@@ -11,7 +11,7 @@ class NewsController {
     $("article").each((_, element) => {
       const title = $(element).find("h2").text();
       const link = $(element).find("a").first().attr("href");
-      const image = $(element).find("img").attr("src");
+      const image = $(element).find("figure").find("img").attr("data-lazy-src") || $(element).find("figure").find("img").attr("src");
 
       if (title) {
         newsList.push({
