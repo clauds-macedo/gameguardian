@@ -2,10 +2,11 @@ import React from 'react';
 import {Image} from 'react-native';
 import NewsCardLabel from '../Label';
 import LinearCardBackground from '../LinearCardBackground';
+import type {ICard} from './types';
 
-const Card = () => {
+const Card = ({onPressCard}: ICard) => {
   return (
-    <LinearCardBackground>
+    <LinearCardBackground onPress={onPressCard}>
       <Image
         source={{
           uri: 'https://www.adrenaline.com.br/wp-content/plugins/seox-image-magick/imagick_convert.php?width=910&height=568&format=webp&quality=91&imagick=uploads.adrenaline.com.br/2023/09/Chefe-criativo-de-Fortnite-esta-deixando-a-Epic-Games-912x569.jpg',

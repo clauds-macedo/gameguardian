@@ -1,10 +1,11 @@
 import React from 'react';
 import Svg, {Defs, LinearGradient, Rect, Stop} from 'react-native-svg';
 import {CardButtonContainer, Content} from './styles';
+import {ILinearProps} from './types';
 
-const LinearCardBackground = ({children}: {children: React.ReactNode}) => {
+const LinearCardBackground = ({onPress, children}: ILinearProps) => {
   return (
-    <CardButtonContainer>
+    <CardButtonContainer onPress={onPress}>
       <Svg height={160} width={'100%'}>
         <Defs>
           <LinearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
