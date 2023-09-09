@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 def fetch_promo_games_ids_steam() -> list[str]:
-    response = requests.get("https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1")
+    response = requests.get("https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1   ")
     
     content_type = response.headers.get('Content-Type')
     # print(content_type)
