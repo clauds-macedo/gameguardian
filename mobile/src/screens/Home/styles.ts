@@ -5,5 +5,6 @@ import styles from '../../global/styles';
 export const Container = styled.View`
   flex: 1;
   background-color: ${colors.primaryBackground};
-  padding: 0 ${styles.defaultApplicationPadding}px;
+  padding-top: 16px;
+  padding-horizontal: ${styles.defaultApplicationPadding}px;
 `;

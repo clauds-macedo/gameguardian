@@ -1,27 +1,25 @@
-import React from 'react';
+import {useState} from 'react';
+import {authConfig} from '../../config/auth-config';
+import {realtimeConfig} from '../../config/database-config';
+import useAppRoute from '../../routes/hooks/useAppRoute';
+
+const INITIAL_STATE = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 const useFormValidation = () => {
-  const [values, setValues] = React.useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const {signUp} = authConfig;
+  const {set} = realtimeConfig;
+  const {navigate} = useAppRoute().navigation;
 
-  const [errors, setErrors] = React.useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [values, setValues] = useState(INITIAL_STATE);
+  const [errors, setErrors] = useState(INITIAL_STATE);
 
   const validate = () => {
-    let newErrors = {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    };
+    let newErrors = INITIAL_STATE;
 
     if (!values.username) newErrors.username = 'Usuário é obrigatório!';
     if (!values.email) newErrors.email = 'E-mail é obrigatório!';
@@ -38,7 +36,25 @@ const useFormValidation = () => {
     return !Object.values(newErrors).some(error => error);
   };
 
-  return {values, setValues, errors, validate};
+  const handleSubmit = async () => {
+    if (!validate()) {
+      return;
+    }
+    try {
+      const {displayName, email, uid, photoURL} = await signUp(
+        values.email,
+        values.password,
+        values.username,
+      );
+      await set(`/users/${uid}`, {displayName, email, photoURL});
+      setValues(INITIAL_STATE);
+      navigate('Home');
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return {values, setValues, errors, validate, handleSubmit};
 };
 
 export default useFormValidation;

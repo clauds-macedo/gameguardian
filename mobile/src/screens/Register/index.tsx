@@ -14,13 +14,7 @@ import {
 
 const Register: React.FC = () => {
   const {languageStrings} = useLanguage();
-  const {values, setValues, errors, validate} = useFormValidation();
-
-  const handleSubmit = () => {
-    if (validate()) {
-      //chamar afunção do firebase aq
-    }
-  };
+  const {values, setValues, errors, handleSubmit} = useFormValidation();
 
   return (
     <Container>

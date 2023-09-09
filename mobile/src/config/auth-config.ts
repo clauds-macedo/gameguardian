@@ -10,14 +10,17 @@ export const authConfig = {
   },
 
   // Criar uma nova conta de usuário
-  signUp: async (email: string, password: string) => {
+  signUp: async (email: string, password: string, displayName: string) => {
     const {user} = await auth().createUserWithEmailAndPassword(email, password);
+    MMKV.set('@user', JSON.stringify({...user, displayName}));
     return user;
   },
 
   // Autenticar um usuário
-  signIn: async (email: string, password: string) => {
-    return await auth().signInWithEmailAndPassword(email, password);
+  signIn: async (email: string, password: string, callback?: () => void) => {
+    const {user} = await auth().signInWithEmailAndPassword(email, password);
+    MMKV.set('@user', JSON.stringify(user));
+    callback?.();
   },
 
   // Desautenticar o usuário atual

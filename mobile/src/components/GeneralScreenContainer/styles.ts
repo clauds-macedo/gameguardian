@@ -7,5 +7,5 @@ export const Container = styled.View`
   align-items: center;
   background-color: ${colors.primaryBackground};
   width: ${styles.screenFullWidth}px;
-  padding: 0 ${styles.defaultApplicationPadding}px;
+  padding: 16px ${styles.defaultApplicationPadding}px;
 `;

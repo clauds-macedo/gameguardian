@@ -43,5 +43,5 @@ export const ImageBackground = styled.ImageBackground`
   height: ${Dimensions.get('screen').height}px;
   width: ${Dimensions.get('screen').width}px;
   top: 0;
-  opacity: 0.045;
+  opacity: 0.1;
 `;
