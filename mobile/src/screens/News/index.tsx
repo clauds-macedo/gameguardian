@@ -1,11 +1,18 @@
 import React from 'react';
-import {Text} from 'react-native';
-import GeneralScreenContainer from '../../components/GeneralScreenContainer';
-
+import Card from './components/Card';
+import {Container} from './styles';
 export const News: React.FC = () => {
   return (
-    <GeneralScreenContainer>
-      <Text style={{color: '#fff'}}>oi</Text>
-    </GeneralScreenContainer>
+    <Container>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </Container>
   );
 };
