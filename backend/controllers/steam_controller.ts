@@ -16,29 +16,38 @@ interface GameResponse {
 }
 
 class SteamController {
-  fetchPromotions = async (req: Request, res: Response) => {
+  private async buildGameResponse(id: string): Promise<GameResponse> {
+    const { data } = await axios.get(gameDetailsPage + id);
+
+    return {
+      title: data[id].data.name,
+      description: data[id].data.detailed_description,
+      screenshots: data[id].data.screenshots,
+    };
+  }
+
+  private async fetchPromotions(): Promise<GameResponse[]> {
+    const ids = await getGamesInPromotion("steam");
+
+    const games = await Promise.all(
+      ids.map((id) => this.buildGameResponse(id))
+    );
+
+    return games;
+  }
+
+  async getPromotions(req: Request, res: Response) {
     try {
-      const ids = await getGamesInPromotion("steam");
+      const games: GameResponse[] = await this.fetchPromotions();
 
-      const response: GameResponse[] = [];
-      for (const id of ids) {
-        const respData = (await axios.get(gameDetailsPage + id)).data;
-
-        if (respData[id].success) {
-          const { data } = respData[id];
-          response.push({
-            title: data.name,
-            description: data.detailed_description,
-            screenshots: data.screenshots,
-          });
-        }
-      }
-
-      return res.status(200).json(response);
+      return res.status(200).json(games);
     } catch (error) {
-      return res.status(500).json({ error: "Erro ao requisitar à Steam." });
+      console.log(error);
+      return res
+        .status(500)
+        .json({ error: "Failed to get games in promotion" });
     }
-  };
+  }
 }
 
 export default new SteamController();
