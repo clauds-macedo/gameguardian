@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import specialsRouter from "./specials.js";
-import epicRouter from "./epic.js";
-import steamRouter from "./steam.js";
-import newsRouter from "./news.js";
+import specialsRouter from "../routes/specials";
+import epicRouter from "../routes/epic";
+import steamRouter from "../routes/steam";
+import newsRouter from "../routes/news";
+
 const routes = Router();
 
 routes.use("/epic", epicRouter);
