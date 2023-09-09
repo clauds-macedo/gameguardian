@@ -1,6 +1,7 @@
 import {styled} from 'styled-components/native';
 import colors from '../../global/colors';
 import styles from '../../global/styles';
+import fonts from '../../global/fonts';
 
 export const Container = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
@@ -15,4 +16,5 @@ export const Container = styled.TouchableOpacity.attrs({
 
 export const OptionLabel = styled.Text`
   color: ${colors.primaryText};
+  font-family: ${fonts.regular};
 `;

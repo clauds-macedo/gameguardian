@@ -12,6 +12,10 @@ export default {
     settings: 'Suas configurações',
     favourites: 'Favoritos',
     contact: 'Contate-nos',
+    signIn: 'Fazer login',
+    signUp: 'Registrar',
+    signOut: 'Desconectar',
+    registerCtaLabel: 'Novo por aqui? Registre-se',
   },
   en: {
     explore: 'Explore',
@@ -26,5 +30,9 @@ export default {
     settings: 'Your settings',
     favourites: 'Favourites',
     contact: 'Contact us',
+    signIn: 'Sign In',
+    signUp: 'Sign Up',
+    signOut: 'Sign Out',
+    registerCtaLabel: 'New here? Sign up',
   },
 };

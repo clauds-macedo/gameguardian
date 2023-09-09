@@ -6,6 +6,7 @@ import PageTitle from '../../components/PageTitle';
 import useGameClicks from '../../hooks/useGameClicks';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
+import {Circles} from '../Login/components/Circles';
 import {getSubtitle} from './utils';
 const Deals = () => {
   const {languageStrings} = useLanguage();
@@ -13,6 +14,8 @@ const Deals = () => {
   const {registerClick} = useGameClicks();
   return (
     <GeneralScreenContainer>
+      <Circles sideX="right" sideY="top" />
+
       <PageTitle
         title={getSubtitle(name, params?.platform ?? '')}
         subtitle={languageStrings.deals}

@@ -1,42 +1,37 @@
 import React from 'react';
+import Input from '../../components/Input';
+import MainButton from '../../components/MainButton';
+import Label from '../../components/PageTitle/components/Label';
+import useLanguage from '../../hooks/useLanguage';
+import useAppRoute from '../../routes/hooks/useAppRoute';
+import {Circles} from './components/Circles';
 import {
   ButtonContainer,
-  ButtonText,
   Container,
   FormContainer,
   ImageBackground,
-  StyledButton,
 } from './styles';
-import {Dimensions} from 'react-native';
-import {Circles} from './components/Circles';
-import Label from '../../components/PageTitle/components/Label';
-import Input from '../../components/Input';
 const Login: React.FC = () => {
+  const {languageStrings} = useLanguage();
+  const {navigate} = useAppRoute().navigation;
   return (
     <Container>
-      <Circles style={{top: 0, position: 'absolute', opacity: 0.5}} />
-      <ImageBackground
-        source={require('./assets/ellie.jpg')}
-        style={{
-          opacity: 0.09,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          position: 'absolute',
-          height: Dimensions.get('screen').height,
-        }}
-        blurRadius={1}
-      />
+      <Circles sideX="left" sideY="top" />
+      <Circles style={{bottom: 40, right: 0}} />
+      <ImageBackground source={require('./assets/ellie.jpg')} blurRadius={1} />
       <FormContainer>
         <Label title>Login</Label>
-        <Input placeholder='E-mail' mt={16}/>
-        <Input placeholder='Password'/>
+        <Input placeholder="E-mail" mt={16} />
+        <Input placeholder="Password" />
       </FormContainer>
       <ButtonContainer>
-        <StyledButton>
-          <ButtonText>Entrar</ButtonText>
-        </StyledButton>
-        <StyledButton>
-          <ButtonText>Registro</ButtonText>
-        </StyledButton>
+        <MainButton
+          variant="tertiary"
+          mb={16}
+          label={languageStrings.registerCtaLabel}
+          onPressButton={() => navigate('Register')}
+        />
+        <MainButton variant="primary" label={languageStrings.signIn} />
       </ButtonContainer>
     </Container>
   );
