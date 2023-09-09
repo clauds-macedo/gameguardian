@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import sys
 
 def fetch_promo_games_ids_steam() -> list[str]:
     response = requests.get("https://store.steampowered.com/search/?ignore_preferences=1&specials=1&ndl=1   ")
