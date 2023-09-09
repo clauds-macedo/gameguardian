@@ -1,6 +1,4 @@
-import { promisify } from "util";
-
-const exec = promisify(require("child_process").exec);
+import { exec } from "./exec";
 
 export const getGamesInPromotion = async (platform: string): Promise<string[]> => {
   const command = `python3 scripts/main.py ${platform}`;
