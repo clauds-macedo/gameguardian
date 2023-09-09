@@ -4,16 +4,16 @@ import {Modalize} from 'react-native-modalize';
 import {Portal} from 'react-native-portalize';
 import WebView from 'react-native-webview';
 import Card from './components/Card';
-import {ICard} from './components/Card/types';
+import type {ICard} from './components/Card/types';
 import {Container} from './styles';
 const {height, width} = Dimensions.get('screen');
 export const News: React.FC = () => {
+  // criar hook separado para lógica abaixo
   const modalizeRef = useRef<Modalize>(null);
   const onOpen = (newUri: string) => {
     setUri(newUri);
     modalizeRef.current?.open();
   };
-
   const [data, setData] = useState<ICard[]>([] as ICard[]);
   const [uri, setUri] = useState('');
 
