@@ -31,7 +31,7 @@ export const Title = styled.Text`
   font-size: 16px;
   font-family: ${fonts.bold};
   color: ${colors.primaryText};
-  width: 80%;
+  width: 90%;
   margin-bottom: 8px;
 `;
 
