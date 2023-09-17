@@ -10,5 +10,8 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "cSpell.words": ["Modalize"]
+  "cSpell.words": [
+    "Modalize",
+    "portalize"
+  ]
 }
