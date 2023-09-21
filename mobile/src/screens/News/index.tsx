@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Dimensions } from 'react-native';
-import { Modalize } from 'react-native-modalize';
-import { Portal } from 'react-native-portalize';
+import React, {useEffect, useRef, useState} from 'react';
+import {Dimensions} from 'react-native';
+import {Modalize} from 'react-native-modalize';
+import {Portal} from 'react-native-portalize';
 import WebView from 'react-native-webview';
 import Card from './components/Card';
-import type { ICard } from './components/Card/types';
-import { Container } from './styles';
+import type {ICard} from './components/Card/types';
+import {Container} from './styles';
 const {height, width} = Dimensions.get('screen');
 export const News: React.FC = () => {
   // criar hook separado para lógica abaixo
@@ -20,7 +20,7 @@ export const News: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const getData = await fetch('http://localhost:3000/news/steam');
-      
+
       const data = await getData.json();
       setData(data);
       console.log(data);
