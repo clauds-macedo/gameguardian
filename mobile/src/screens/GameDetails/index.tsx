@@ -6,7 +6,14 @@ import PageTitle from '../../components/PageTitle';
 import PromotionPrice from '../../components/PromotionPrice';
 import colors from '../../global/colors';
 import useLanguage from '../../hooks/useLanguage';
-import {BackgroundImage, Text, TextContainer, TitleContainer} from './styles';
+import {TopTabNavigation} from './routes/routes';
+import {
+  BackgroundImage,
+  Box,
+  Text,
+  TextContainer,
+  TitleContainer,
+} from './styles';
 
 //para fins de mock
 const uri =
@@ -33,7 +40,9 @@ const GameDetails: React.FC = () => {
           </Text>
           <PromotionPrice discountedPrice="30" oldPrice="50" />
         </TextContainer>
-        {/* <TopTabNavigation /> */}
+        <Box>
+          <TopTabNavigation />
+        </Box>
       </GeneralScreenContainer>
     </>
   );
