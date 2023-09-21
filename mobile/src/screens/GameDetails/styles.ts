@@ -1,6 +1,17 @@
 import styled from 'styled-components/native';
 import colors from '../../global/colors';
 
+export const Box = styled.View`
+  flex: 1;
+  width: 100%;
+`;
+
+export const Container = styled.View`
+  flex: 1;
+  width: 100%;
+  background-color: ${colors.primaryBackground};
+`;
+
 export const TextContainer = styled.View`
   width: 100%;
   margin-left: -4px;
