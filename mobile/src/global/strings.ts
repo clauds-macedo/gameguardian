@@ -16,6 +16,7 @@ export default {
     signUp: 'Registrar',
     signOut: 'Desconectar',
     registerCtaLabel: 'Novo por aqui? Registre-se',
+    details: 'Detalhes',
   },
   en: {
     explore: 'Explore',
@@ -34,5 +35,6 @@ export default {
     signUp: 'Sign Up',
     signOut: 'Sign Out',
     registerCtaLabel: 'New here? Sign up',
+    details: 'Details',
   },
 };
