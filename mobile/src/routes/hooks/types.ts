@@ -7,4 +7,5 @@ export type NavigationParamList = {
   Login: undefined;
   Favourites: undefined;
   Register: undefined;
+  GameDetails: undefined;
 };

@@ -1,6 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import Deals from '../../screens/Deals';
 import Favourites from '../../screens/Favourites';
+import GameDetails from '../../screens/GameDetails';
 import Login from '../../screens/Login';
 import Register from '../../screens/Register';
 import {BottomTabNavigation} from '../BottomNavigation';
@@ -15,6 +16,7 @@ export const StackNavigation = () => {
       <Stack.Screen name="Favourites" component={Favourites} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="GameDetails" component={GameDetails} />
     </Stack.Navigator>
   );
 };
