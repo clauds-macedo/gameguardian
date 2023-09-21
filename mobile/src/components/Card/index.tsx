@@ -3,12 +3,10 @@ import {TouchableOpacity} from 'react-native';
 import {Heart} from 'react-native-feather';
 import {authConfig} from '../../config/auth-config';
 import colors from '../../global/colors';
-import useLanguage from '../../hooks/useLanguage';
+import PromotionPrice from '../PromotionPrice';
 import {
   ButtonContainer,
   Container,
-  DiscountedPrice,
-  OldPrice,
   StyledImage,
   TextContainer,
   Title,
@@ -25,8 +23,6 @@ export const Card: React.FC<CardProps> = ({
   mt,
   onCardPress,
 }) => {
-  const {language} = useLanguage();
-  const currency = language === 'en' ? '$' : 'R$';
   const {isLoggedIn} = authConfig;
   return (
     <Container mb={mb} mt={mt}>
@@ -46,8 +42,10 @@ export const Card: React.FC<CardProps> = ({
         <StyledImage source={{uri}} />
         <TextContainer>
           <Title>{title}</Title>
-          <OldPrice>{currency + ' ' + oldPrice}</OldPrice>
-          <DiscountedPrice>{currency + ' ' + discountedPrice}</DiscountedPrice>
+          <PromotionPrice
+            discountedPrice={discountedPrice}
+            oldPrice={oldPrice}
+          />
         </TextContainer>
       </ButtonContainer>
     </Container>
