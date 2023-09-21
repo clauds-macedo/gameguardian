@@ -9,10 +9,13 @@ import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import {Circles} from '../Login/components/Circles';
 import {getSubtitle} from './utils';
+
 const Deals = () => {
   const {languageStrings} = useLanguage();
   const {name, params} = useAppRoute().route;
   const {registerClick} = useGameClicks();
+  const {navigate} = useAppRoute().navigation;
+
   return (
     <GeneralScreenContainer>
       <Circles sideX="right" sideY="top" />
@@ -93,7 +96,10 @@ const Deals = () => {
               {...item}
               mt={8}
               mb={8}
-              onCardPress={() => registerClick(item.title)}
+              onCardPress={() => {
+                registerClick(item.title);
+                navigate('GameDetails');
+              }}
             />
           );
         }}
