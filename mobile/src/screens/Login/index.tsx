@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Input from '../../components/Input';
 import MainButton from '../../components/MainButton';
 import Label from '../../components/PageTitle/components/Label';
-import { AuthRepository } from '../../data/repositories/AuthRepository';
+import { authenticationUseCase } from '../../data/usecases/authenticationUseCase';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from './components/Circles';
@@ -18,7 +18,7 @@ const Login: React.FC = () => {
   // Hooks
   const { languageStrings } = useLanguage();
   const { navigate } = useAppRoute().navigation;
-  const { login: signIn } = new AuthRepository();
+
   // States
   const [login, setLogin] = useState({ email: '', password: '' });
 
@@ -58,7 +58,10 @@ const Login: React.FC = () => {
           label={languageStrings.signIn}
           onPressButton={async () => {
             try {
-              await signIn({ email: login.email, password: login.password });
+              await authenticationUseCase.login({
+                email: login.email,
+                password: login.password,
+              });
               navigate('Home');
             } catch (e) {
               console.warn(e);
