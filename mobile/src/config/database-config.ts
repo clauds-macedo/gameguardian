@@ -8,26 +8,26 @@ export const realtimeConfig = {
 
   // Definir valor em um determinado documento
   set: async (path: string, value: any) => {
-    const documentReference = firestore().doc(path);
+    const documentReference = firestore().collection('games').doc(path);
     await documentReference.set(value);
   },
 
   // Buscar valor de um determinado documento
   get: async (path: string) => {
-    const documentReference = firestore().doc(path);
+    const documentReference = firestore().collection('games').doc(path);
     const documentSnapshot = await documentReference.get();
     return documentSnapshot.data();
   },
 
   // Atualizar valores em um determinado documento
   update: async (path: string, updates: object) => {
-    const documentReference = firestore().doc(path);
-    await documentReference.update(updates);
+    const documentReference = firestore().collection('games');
+    await documentReference.doc(path).update(updates);
   },
 
   // Remover um documento de um determinado caminho
   remove: async (path: string) => {
-    const documentReference = firestore().doc(path);
+    const documentReference = firestore().collection('games').doc(path);
     await documentReference.delete();
   },
 
@@ -39,7 +39,7 @@ export const realtimeConfig = {
       data?: FirebaseFirestoreTypes.DocumentData
     ) => void
   ) => {
-    const documentReference = firestore().doc(path);
+    const documentReference = firestore().collection('games').doc(path);
     const unsubscribe = documentReference.onSnapshot((documentSnapshot) => {
       callback(documentSnapshot.data());
     });

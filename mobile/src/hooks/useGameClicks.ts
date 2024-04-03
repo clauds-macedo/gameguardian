@@ -1,12 +1,22 @@
-import { realtimeConfig } from '../config/database-config';
+import firestore from '@react-native-firebase/firestore';
 
 const useGameClicks = () => {
   const registerClick = async (gameTitle: string) => {
     const currentDate = new Date().toISOString().split('T')[0];
-    const gamePath = `clicks/${currentDate}/${gameTitle}`;
-    const gameRef = realtimeConfig.docRef(gamePath);
+    const doc = firestore().collection('games').doc(currentDate);
 
-    // gameRef.transaction((currentClicks) => (currentClicks || 0) + 1);
+    const gameDocValues = (await doc.get()).data();
+    const gameInfo = gameDocValues?.[gameTitle];
+    console.log(gameInfo, 'gamedoc');
+    if (!gameInfo) {
+      await doc.update({
+        [gameTitle]: { clicks: 1 },
+      });
+    }
+    const newClicks = (gameInfo?.clicks || 0) + 1;
+    await doc.update(new firestore.FieldPath(gameTitle), {
+      clicks: newClicks,
+    });
   };
 
   return { registerClick };

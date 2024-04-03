@@ -13,6 +13,7 @@ const Deals = () => {
   const { languageStrings } = useLanguage();
   const { name, params } = useAppRoute().route;
   const { registerClick } = useGameClicks();
+
   return (
     <GeneralScreenContainer>
       <Circles sideX="right" sideY="top" />
