@@ -1,7 +1,7 @@
 import useLanguage from '../../hooks/useLanguage';
 
 export const getSubtitle = (route: string, platform: string) => {
-  const {languageStrings} = useLanguage();
+  const { languageStrings } = useLanguage();
   let subtitle = '';
   if (route === 'PlatformDeals') {
     subtitle = platform;

@@ -1,14 +1,14 @@
 import React from 'react';
-import {Animated} from 'react-native';
-import {ExpandingDot} from 'react-native-animated-pagination-dots';
+import { Animated } from 'react-native';
+import { ExpandingDot } from 'react-native-animated-pagination-dots';
 import colors from '../../global/colors';
 import Carousel from './components/Carousel';
 import useGetPlatforms from './hooks/useGetPlatforms';
-import {Container} from './styles';
+import { Container } from './styles';
 
 export const Platforms: React.FC = () => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
-  const {platforms} = useGetPlatforms();
+  const { platforms } = useGetPlatforms();
 
   return (
     <Container>

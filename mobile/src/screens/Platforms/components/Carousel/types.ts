@@ -1,8 +1,8 @@
-import {Animated} from 'react-native';
-import type {PlatformInfo} from '../../hooks/useGetPlatforms';
+import { Animated } from 'react-native';
+import type { PlatformInfo } from '../../hooks/useGetPlatforms';
 
 export interface CarouselProps {
-  data: {name: string; src: string}[];
+  data: { name: string; src: string }[];
   scrollX: Animated.Value;
 }
 

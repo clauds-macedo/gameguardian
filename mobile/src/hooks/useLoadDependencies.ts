@@ -2,8 +2,8 @@
  * Hook utilizado para carregar as dependências iniciais necessárias para o funcionamento do app.
  */
 
-import {useEffect} from 'react';
-import {firebase, firebaseConfig} from '../config/firebase';
+import { useEffect } from 'react';
+import { firebase, firebaseConfig } from '../config/firebase';
 
 const useLoadDependencies = () => {
   useEffect(() => {

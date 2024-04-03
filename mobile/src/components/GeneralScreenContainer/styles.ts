@@ -1,4 +1,4 @@
-import {styled} from 'styled-components/native';
+import { styled } from 'styled-components/native';
 import colors from '../../global/colors';
 import styles from '../../global/styles';
 

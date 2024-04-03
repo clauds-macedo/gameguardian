@@ -1,4 +1,4 @@
-import {SvgProps} from 'react-native-svg';
+import { SvgProps } from 'react-native-svg';
 
 export interface IOptionConfig {
   name: string;

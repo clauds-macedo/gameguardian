@@ -4,15 +4,15 @@ import MainButton from '../../components/MainButton';
 import OptionConfig from '../../components/OptionConfig';
 import PageTitle from '../../components/PageTitle';
 import UserProfile from '../../components/UserProfile';
-import {authConfig} from '../../config/auth-config';
+import { authConfig } from '../../config/auth-config';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
-import {options} from './utils';
+import { options } from './utils';
 
 const Profile: React.FC = () => {
-  const {languageStrings} = useLanguage();
-  const {isLoggedIn, signOut} = authConfig;
-  const {navigate} = useAppRoute().navigation;
+  const { languageStrings } = useLanguage();
+  const { isLoggedIn, signOut } = authConfig;
+  const { navigate } = useAppRoute().navigation;
   return (
     <GeneralScreenContainer>
       <PageTitle
@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
         subtitle={languageStrings.hello}
       />
       <UserProfile />
-      {options.map(({icon, name}) => (
+      {options.map(({ icon, name }) => (
         <OptionConfig
           key={name}
           icon={icon}
@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
       <MainButton
         variant={isLoggedIn() ? 'secondary' : 'primary'}
         label={isLoggedIn() ? languageStrings.signOut : languageStrings.signIn}
-        style={{position: 'absolute', bottom: 16}}
+        style={{ position: 'absolute', bottom: 16 }}
         onPressButton={() => {
           if (isLoggedIn()) {
             signOut();

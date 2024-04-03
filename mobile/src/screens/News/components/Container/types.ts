@@ -1,3 +1,3 @@
-interface IContainer {
+export interface IContainer {
   children: React.ReactNode;
 }

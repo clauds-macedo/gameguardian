@@ -1,8 +1,8 @@
-import {styled} from 'styled-components/native';
-import {ITEM_SPACING, ITEM_WIDTH} from './utils';
+import { styled } from 'styled-components/native';
+import { ITEM_SPACING, ITEM_WIDTH } from './utils';
 
 export const CarouselContainer = styled.FlatList.attrs({
-  contentContainerStyle: {paddingRight: ITEM_SPACING},
+  contentContainerStyle: { paddingRight: ITEM_SPACING },
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`

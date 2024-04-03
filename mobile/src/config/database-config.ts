@@ -1,4 +1,6 @@
-import database, {FirebaseDatabaseTypes} from '@react-native-firebase/database';
+import database, {
+  FirebaseDatabaseTypes,
+} from '@react-native-firebase/database';
 
 export const realtimeConfig = {
   dbRef: (path: string) => database().ref(path),
@@ -31,10 +33,10 @@ export const realtimeConfig = {
   // Ouvir mudanças em um determinado caminho
   listen: (
     path: string,
-    callback: (data: FirebaseDatabaseTypes.DataSnapshot) => void,
+    callback: (data: FirebaseDatabaseTypes.DataSnapshot) => void
   ) => {
     const reference = database().ref(path);
-    reference.on('value', snapshot => {
+    reference.on('value', (snapshot) => {
       callback(snapshot.val());
     });
     return () => {

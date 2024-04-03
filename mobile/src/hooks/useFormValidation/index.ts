@@ -1,6 +1,6 @@
-import {useState} from 'react';
-import {authConfig} from '../../config/auth-config';
-import {realtimeConfig} from '../../config/database-config';
+import { useState } from 'react';
+import { authConfig } from '../../config/auth-config';
+import { realtimeConfig } from '../../config/database-config';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 
 const INITIAL_STATE = {
@@ -11,29 +11,36 @@ const INITIAL_STATE = {
 };
 
 const useFormValidation = () => {
-  const {signUp} = authConfig;
-  const {set} = realtimeConfig;
-  const {navigate} = useAppRoute().navigation;
+  const { signUp } = authConfig;
+  const { set } = realtimeConfig;
+  const { navigate } = useAppRoute().navigation;
 
   const [values, setValues] = useState(INITIAL_STATE);
   const [errors, setErrors] = useState(INITIAL_STATE);
 
   const validate = () => {
-    let newErrors = INITIAL_STATE;
+    const newErrors = INITIAL_STATE;
 
-    if (!values.username) newErrors.username = 'Usuário é obrigatório!';
-    if (!values.email) newErrors.email = 'E-mail é obrigatório!';
-    else if (!/\S+@\S+\.\S+/.test(values.email))
+    if (!values.username) {
+      newErrors.username = 'Usuário é obrigatório!';
+    }
+    if (!values.email) {
+      newErrors.email = 'E-mail é obrigatório!';
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
       newErrors.email = 'E-mail inválido!';
+    }
 
-    if (!values.password) newErrors.password = 'Senha é obrigatória!';
-    if (!values.confirmPassword)
+    if (!values.password) {
+      newErrors.password = 'Senha é obrigatória!';
+    }
+    if (!values.confirmPassword) {
       newErrors.confirmPassword = 'Confirmação de senha é obrigatória!';
-    else if (values.password !== values.confirmPassword)
+    } else if (values.password !== values.confirmPassword) {
       newErrors.confirmPassword = 'Senha e confirmação de senha não coincidem!';
+    }
 
     setErrors(newErrors);
-    return !Object.values(newErrors).some(error => error);
+    return !Object.values(newErrors).some((error) => error);
   };
 
   const handleSubmit = async () => {
@@ -41,12 +48,12 @@ const useFormValidation = () => {
       return;
     }
     try {
-      const {displayName, email, uid, photoURL} = await signUp(
+      const { displayName, email, uid, photoURL } = await signUp(
         values.email,
         values.password,
-        values.username,
+        values.username
       );
-      await set(`/users/${uid}`, {displayName, email, photoURL});
+      await set(`/users/${uid}`, { displayName, email, photoURL });
       setValues(INITIAL_STATE);
       navigate('Home');
     } catch (e) {
@@ -54,7 +61,7 @@ const useFormValidation = () => {
     }
   };
 
-  return {values, setValues, errors, validate, handleSubmit};
+  return { values, setValues, errors, validate, handleSubmit };
 };
 
 export default useFormValidation;

@@ -5,5 +5,5 @@ export default {
   primaryBackground: '#1F2228',
   primaryButton: '#4B87FF',
   secondaryButton: '#FF5555',
-  tertiaryButton: '#666A70'
+  tertiaryButton: '#666A70',
 };

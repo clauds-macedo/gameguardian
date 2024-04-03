@@ -1,12 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Dimensions} from 'react-native';
-import {Modalize} from 'react-native-modalize';
-import {Portal} from 'react-native-portalize';
+import React, { useEffect, useRef, useState } from 'react';
+import { Dimensions } from 'react-native';
+import { Modalize } from 'react-native-modalize';
+import { Portal } from 'react-native-portalize';
 import WebView from 'react-native-webview';
 import Card from './components/Card';
-import type {ICard} from './components/Card/types';
-import {Container} from './styles';
-const {height, width} = Dimensions.get('screen');
+import type { ICard } from './components/Card/types';
+import { Container } from './styles';
+
+const { height, width } = Dimensions.get('screen');
 export const News: React.FC = () => {
   // criar hook separado para lógica abaixo
   const modalizeRef = useRef<Modalize>(null);
@@ -38,14 +39,15 @@ export const News: React.FC = () => {
           childrenStyle={{
             height: '95%',
             width,
-          }}>
-          <WebView source={{uri}} style={{height}} startInLoadingState />
+          }}
+        >
+          <WebView source={{ uri }} style={{ height }} startInLoadingState />
         </Modalize>
       </Portal>
       <Container
         data={data}
         showsVerticalScrollIndicator={false}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <Card
             link={item.link}
             image={item.image}

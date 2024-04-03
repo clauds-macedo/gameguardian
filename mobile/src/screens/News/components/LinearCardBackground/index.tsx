@@ -1,9 +1,9 @@
 import React from 'react';
-import Svg, {Defs, LinearGradient, Rect, Stop} from 'react-native-svg';
-import {CardButtonContainer, Content} from './styles';
-import {ILinearProps} from './types';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
+import { CardButtonContainer, Content } from './styles';
+import { ILinearProps } from './types';
 
-const LinearCardBackground = ({onPress, children}: ILinearProps) => {
+const LinearCardBackground = ({ onPress, children }: ILinearProps) => {
   return (
     <CardButtonContainer onPress={onPress}>
       <Svg height={160} width={'100%'}>

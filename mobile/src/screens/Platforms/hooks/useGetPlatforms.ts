@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import useRemoteConfig from '../../../hooks/useRemoteConfig';
-import {convertPlatformObjectToArray} from '../components/Carousel/utils';
+import { convertPlatformObjectToArray } from '../components/Carousel/utils';
 
 export interface PlatformInfo {
   name: string;
@@ -9,9 +9,9 @@ export interface PlatformInfo {
 
 const useGetPlatforms = () => {
   const [platforms, setPlatforms] = useState<PlatformInfo[]>(
-    [] as PlatformInfo[],
+    [] as PlatformInfo[]
   );
-  const {getConfigValue} = useRemoteConfig();
+  const { getConfigValue } = useRemoteConfig();
 
   const getPlatforms = async () => {
     const value = await getConfigValue('platforms');
@@ -24,7 +24,7 @@ const useGetPlatforms = () => {
     getPlatforms();
   }, []);
 
-  return {platforms};
+  return { platforms };
 };
 
 export default useGetPlatforms;

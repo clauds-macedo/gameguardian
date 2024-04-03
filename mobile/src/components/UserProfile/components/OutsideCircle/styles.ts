@@ -1,4 +1,4 @@
-import {Circle as SVGCircle} from 'react-native-svg';
+import { Circle as SVGCircle } from 'react-native-svg';
 import styled from 'styled-components/native';
 import colors from '../../../../global/colors';
 

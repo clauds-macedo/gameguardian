@@ -1,9 +1,9 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import colors from '../../global/colors';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 export const Container = styled.View`
   flex: 1;
@@ -25,10 +25,10 @@ export const IndicatorContainer = styled.View`
   margin-top: 20px;
 `;
 
-export const Indicator = styled(Animated.View)<{selected?: boolean}>`
+export const Indicator = styled(Animated.View)<{ selected?: boolean }>`
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: ${props => (props.selected ? 'blue' : 'gray')};
+  background-color: ${(props) => (props.selected ? 'blue' : 'gray')};
   margin-horizontal: 5px;
 `;

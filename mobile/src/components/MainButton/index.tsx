@@ -1,6 +1,6 @@
 import React from 'react';
-import {IMainButton} from './types';
-import {ButtonText, StyledButton} from './styles';
+import { IMainButton } from './types';
+import { ButtonText, StyledButton } from './styles';
 
 const MainButton: React.FC<IMainButton> = ({
   variant = 'primary',
@@ -9,10 +9,16 @@ const MainButton: React.FC<IMainButton> = ({
   mb,
   mt,
   onPressButton,
-  style
+  style,
 }) => {
   return (
-    <StyledButton variant={variant} mb={mb} mt={mt} onPress={onPressButton} style={{...style}}>
+    <StyledButton
+      variant={variant}
+      mb={mb}
+      mt={mt}
+      onPress={onPressButton}
+      style={{ ...style }}
+    >
       {icon && icon}
       <ButtonText>{label}</ButtonText>
     </StyledButton>

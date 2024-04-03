@@ -1,7 +1,7 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {Heart} from 'react-native-feather';
-import {authConfig} from '../../config/auth-config';
+import { TouchableOpacity } from 'react-native';
+import { Heart } from 'react-native-feather';
+import { authConfig } from '../../config/auth-config';
 import colors from '../../global/colors';
 import useLanguage from '../../hooks/useLanguage';
 import {
@@ -13,7 +13,7 @@ import {
   TextContainer,
   Title,
 } from './styles';
-import {CardProps} from './types';
+import { CardProps } from './types';
 
 export const Card: React.FC<CardProps> = ({
   discountedPrice,
@@ -25,15 +25,16 @@ export const Card: React.FC<CardProps> = ({
   mt,
   onCardPress,
 }) => {
-  const {language} = useLanguage();
+  const { language } = useLanguage();
   const currency = language === 'en' ? '$' : 'R$';
-  const {isLoggedIn} = authConfig;
+  const { isLoggedIn } = authConfig;
   return (
     <Container mb={mb} mt={mt}>
       {isLoggedIn() && (
         <TouchableOpacity
           activeOpacity={0.8}
-          style={{position: 'absolute', right: 0, top: 5}}>
+          style={{ position: 'absolute', right: 0, top: 5 }}
+        >
           <Heart
             width={32}
             height={32}
@@ -43,7 +44,7 @@ export const Card: React.FC<CardProps> = ({
         </TouchableOpacity>
       )}
       <ButtonContainer activeOpacity={0.8} onPress={onCardPress}>
-        <StyledImage source={{uri}} />
+        <StyledImage source={{ uri }} />
         <TextContainer>
           <Title>{title}</Title>
           <OldPrice>{currency + ' ' + oldPrice}</OldPrice>

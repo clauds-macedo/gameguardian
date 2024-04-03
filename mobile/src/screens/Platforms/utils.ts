@@ -24,7 +24,7 @@ const temp = {
   },
 };
 
-export const platformData = Object.values(temp.platforms).map(platform => ({
+export const platformData = Object.values(temp.platforms).map((platform) => ({
   name: platform.name,
   src: platform.src,
 }));

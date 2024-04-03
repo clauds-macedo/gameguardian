@@ -1,17 +1,17 @@
 import React from 'react';
-import {FlatList} from 'react-native';
-import {Card} from '../../components/Card';
+import { FlatList } from 'react-native';
+import { Card } from '../../components/Card';
 import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 import PageTitle from '../../components/PageTitle';
 import useGameClicks from '../../hooks/useGameClicks';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
-import {Circles} from '../Login/components/Circles';
-import {getSubtitle} from './utils';
+import { Circles } from '../Login/components/Circles';
+import { getSubtitle } from './utils';
 const Deals = () => {
-  const {languageStrings} = useLanguage();
-  const {name, params} = useAppRoute().route;
-  const {registerClick} = useGameClicks();
+  const { languageStrings } = useLanguage();
+  const { name, params } = useAppRoute().route;
+  const { registerClick } = useGameClicks();
   return (
     <GeneralScreenContainer>
       <Circles sideX="right" sideY="top" />
@@ -65,7 +65,7 @@ const Deals = () => {
             favourite: true,
           },
         ]}
-        renderItem={({item}) => {
+        renderItem={({ item }) => {
           return (
             <Card
               {...item}

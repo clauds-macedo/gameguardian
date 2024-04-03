@@ -3,7 +3,7 @@ export type NavigationParamList = {
   Alerts: undefined;
   Deals: undefined;
   Profile: undefined;
-  PlatformDeals: {platform: string};
+  PlatformDeals: { platform: string };
   Login: undefined;
   Favourites: undefined;
   Register: undefined;

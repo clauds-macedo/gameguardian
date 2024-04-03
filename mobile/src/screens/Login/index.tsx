@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/Input';
 import MainButton from '../../components/MainButton';
 import Label from '../../components/PageTitle/components/Label';
-import {authConfig} from '../../config/auth-config';
+import { authConfig } from '../../config/auth-config';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
-import {Circles} from './components/Circles';
+import { Circles } from './components/Circles';
 import {
   ButtonContainer,
   Container,
@@ -15,27 +15,27 @@ import {
 
 const Login: React.FC = () => {
   // Hooks
-  const {languageStrings} = useLanguage();
-  const {navigate} = useAppRoute().navigation;
-  const {signIn} = authConfig;
+  const { languageStrings } = useLanguage();
+  const { navigate } = useAppRoute().navigation;
+  const { signIn } = authConfig;
 
   // States
-  const [login, setLogin] = useState({email: '', password: ''});
+  const [login, setLogin] = useState({ email: '', password: '' });
 
   // Event handlers
   const handleEmailChange = (email: string) => {
-    setLogin(prev => ({...prev, email}));
+    setLogin((prev) => ({ ...prev, email }));
   };
 
   const handlePasswordChange = (password: string) => {
-    setLogin(prev => ({...prev, password}));
+    setLogin((prev) => ({ ...prev, password }));
   };
 
   // Render
   return (
     <Container>
       <Circles sideX="left" sideY="top" />
-      <Circles style={{bottom: 40, right: 0}} />
+      <Circles style={{ bottom: 40, right: 0 }} />
       <ImageBackground source={require('./assets/ellie.jpg')} blurRadius={1} />
       <FormContainer>
         <Label title>Login</Label>

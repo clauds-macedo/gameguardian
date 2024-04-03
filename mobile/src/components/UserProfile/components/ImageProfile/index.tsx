@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from './styles';
+import { Image } from './styles';
 
 const ImageProfile: React.FC = () => {
   return (

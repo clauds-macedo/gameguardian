@@ -1,5 +1,5 @@
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {MMKV as MMKVStorage} from 'react-native-mmkv';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { MMKV as MMKVStorage } from 'react-native-mmkv';
 
 const MMKV = new MMKVStorage();
 
@@ -11,14 +11,17 @@ export const authConfig = {
 
   // Criar uma nova conta de usuário
   signUp: async (email: string, password: string, displayName: string) => {
-    const {user} = await auth().createUserWithEmailAndPassword(email, password);
-    MMKV.set('@user', JSON.stringify({...user, displayName}));
+    const { user } = await auth().createUserWithEmailAndPassword(
+      email,
+      password
+    );
+    MMKV.set('@user', JSON.stringify({ ...user, displayName }));
     return user;
   },
 
   // Autenticar um usuário
   signIn: async (email: string, password: string, callback?: () => void) => {
-    const {user} = await auth().signInWithEmailAndPassword(email, password);
+    const { user } = await auth().signInWithEmailAndPassword(email, password);
     MMKV.set('@user', JSON.stringify(user));
     callback?.();
   },
@@ -45,7 +48,7 @@ export const authConfig = {
 
   // Ouvir mudanças no status de autenticação do usuário
   onAuthStateChanged: (
-    callback: (user: FirebaseAuthTypes.User | null) => void,
+    callback: (user: FirebaseAuthTypes.User | null) => void
   ) => {
     return auth().onAuthStateChanged(callback);
   },
@@ -61,7 +64,7 @@ export const authConfig = {
       return;
     }
     const user: FirebaseAuthTypes.User = JSON.parse(
-      MMKV.getString('@user') ?? '',
+      MMKV.getString('@user') ?? ''
     );
     return user;
   },

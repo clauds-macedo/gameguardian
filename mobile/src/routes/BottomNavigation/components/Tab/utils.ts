@@ -1,4 +1,4 @@
-import {Bell, Home, ShoppingCart, User} from 'react-native-feather';
+import { Bell, Home, ShoppingCart, User } from 'react-native-feather';
 
 export const iconsByRouteName = {
   Home,
