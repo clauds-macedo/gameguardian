@@ -8,6 +8,7 @@ import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from '../Login/components/Circles';
 import { getSubtitle } from './utils';
+
 const Deals = () => {
   const { languageStrings } = useLanguage();
   const { name, params } = useAppRoute().route;
@@ -65,16 +66,14 @@ const Deals = () => {
             favourite: true,
           },
         ]}
-        renderItem={({ item }) => {
-          return (
-            <Card
-              {...item}
-              mt={8}
-              mb={8}
-              onCardPress={() => registerClick(item.title)}
-            />
-          );
-        }}
+        renderItem={({ item }) => (
+          <Card
+            {...item}
+            mt={8}
+            mb={8}
+            onCardPress={() => registerClick(item.title)}
+          />
+        )}
         style={{
           width: '100%',
         }}

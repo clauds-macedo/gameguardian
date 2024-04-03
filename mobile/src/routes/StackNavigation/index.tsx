@@ -7,14 +7,12 @@ import { BottomTabNavigation } from '../BottomNavigation';
 
 const Stack = createStackNavigator();
 
-export const StackNavigation = () => {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Tabs" component={BottomTabNavigation} />
-      <Stack.Screen name="PlatformDeals" component={Deals} />
-      <Stack.Screen name="Favourites" component={Favourites} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
-    </Stack.Navigator>
-  );
-};
+export const StackNavigation = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="Tabs" component={BottomTabNavigation} />
+    <Stack.Screen name="PlatformDeals" component={Deals} />
+    <Stack.Screen name="Favourites" component={Favourites} />
+    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Register" component={Register} />
+  </Stack.Navigator>
+);

@@ -1,8 +1,9 @@
+/* eslint-disable global-require */
 import React, { useState } from 'react';
 import Input from '../../components/Input';
 import MainButton from '../../components/MainButton';
 import Label from '../../components/PageTitle/components/Label';
-import { authConfig } from '../../config/auth-config';
+import { AuthRepository } from '../../data/repositories/AuthRepository';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from './components/Circles';
@@ -17,8 +18,7 @@ const Login: React.FC = () => {
   // Hooks
   const { languageStrings } = useLanguage();
   const { navigate } = useAppRoute().navigation;
-  const { signIn } = authConfig;
-
+  const { login: signIn } = new AuthRepository();
   // States
   const [login, setLogin] = useState({ email: '', password: '' });
 
@@ -58,8 +58,11 @@ const Login: React.FC = () => {
           label={languageStrings.signIn}
           onPressButton={async () => {
             try {
-              signIn(login.email, login.password, () => navigate('Home'));
-            } catch (e) {}
+              await signIn({ email: login.email, password: login.password });
+              navigate('Home');
+            } catch (e) {
+              console.warn(e);
+            }
           }}
         />
       </ButtonContainer>

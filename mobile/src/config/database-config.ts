@@ -1,46 +1,48 @@
-import database, {
-  FirebaseDatabaseTypes,
-} from '@react-native-firebase/database';
+import firestore, {
+  FirebaseFirestoreTypes,
+} from '@react-native-firebase/firestore';
 
 export const realtimeConfig = {
-  dbRef: (path: string) => database().ref(path),
+  // Referência a um documento em um determinado caminho
+  docRef: (path: string) => firestore().doc(path),
 
-  // Definir valor em um determinado caminho
+  // Definir valor em um determinado documento
   set: async (path: string, value: any) => {
-    const reference = database().ref(path);
-    await reference.set(value);
+    const documentReference = firestore().doc(path);
+    await documentReference.set(value);
   },
 
-  // Buscar valor de um determinado caminho
+  // Buscar valor de um determinado documento
   get: async (path: string) => {
-    const reference = database().ref(path);
-    const snapshot = await reference.once('value');
-    return snapshot.val();
+    const documentReference = firestore().doc(path);
+    const documentSnapshot = await documentReference.get();
+    return documentSnapshot.data();
   },
 
-  // Atualizar valores em um determinado caminho
+  // Atualizar valores em um determinado documento
   update: async (path: string, updates: object) => {
-    const reference = database().ref(path);
-    await reference.update(updates);
+    const documentReference = firestore().doc(path);
+    await documentReference.update(updates);
   },
 
-  // Remover valor de um determinado caminho
+  // Remover um documento de um determinado caminho
   remove: async (path: string) => {
-    const reference = database().ref(path);
-    await reference.remove();
+    const documentReference = firestore().doc(path);
+    await documentReference.delete();
   },
 
-  // Ouvir mudanças em um determinado caminho
+  // Ouvir mudanças em um determinado documento
   listen: (
     path: string,
-    callback: (data: FirebaseDatabaseTypes.DataSnapshot) => void
+    callback: (
+      // eslint-disable-next-line no-unused-vars
+      data?: FirebaseFirestoreTypes.DocumentData
+    ) => void
   ) => {
-    const reference = database().ref(path);
-    reference.on('value', (snapshot) => {
-      callback(snapshot.val());
+    const documentReference = firestore().doc(path);
+    const unsubscribe = documentReference.onSnapshot((documentSnapshot) => {
+      callback(documentSnapshot.data());
     });
-    return () => {
-      reference.off('value');
-    };
+    return unsubscribe; // Função para parar de ouvir as mudanças
   },
 };
