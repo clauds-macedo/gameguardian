@@ -1,9 +1,8 @@
 export interface CardProps {
-  uri: string;
+  link: string;
   title: string;
-  oldPrice: string;
+  originalPrice: string;
   discountedPrice: string;
-  favourite: boolean;
   onCardPress?: () => void;
   mb?: number;
   mt?: number;

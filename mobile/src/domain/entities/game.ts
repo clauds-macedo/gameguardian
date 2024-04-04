@@ -5,7 +5,7 @@ export interface Game {
   developers: string[];
   publishers: string[];
   originalPrice: string;
-  discountedPrice: string | undefined;
-  discountPercent: string | undefined;
+  discountedPrice: string;
+  discountPercent: string;
   link: string;
 }
