@@ -1,39 +1,28 @@
-import firestore from '@react-native-firebase/firestore';
 import { IGameClicksDTO } from '../../../domain/dtos/game-clicks.dto';
 import { GameClicks } from '../../../domain/entities/game-clicks';
 import { IGameClicksRepository } from '../../../domain/repositories/IGameClicksRepository';
-import { currentDate } from '../../../utils/current-date';
+import { FirestoreRepository } from '../FirestoreRepository';
 
 export class GameClicksRepository implements IGameClicksRepository {
-  private getGamesCollection() {
-    return firestore().collection('games').doc(currentDate);
+  private firestoreRepository: FirestoreRepository<GameClicks>;
+
+  constructor() {
+    this.firestoreRepository = new FirestoreRepository<GameClicks>('games');
   }
 
-  private async getClicksFromDatabase(
-    requestDTO: IGameClicksDTO
-  ): Promise<GameClicks> {
-    const { doc: docName } = requestDTO;
-    const collection = this.getGamesCollection();
-    try {
-      const docValue = (await collection.get()).data();
-      if (!docValue) {
-        return { clicks: 1 };
-      }
-      const { clicks } = docValue[docName];
-      return { clicks };
-    } catch (error) {
-      console.error('Failed to get clicks from database:', error);
-      throw error;
-    }
-  }
-
-  async register(requestDTO: IGameClicksDTO) {
+  async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
-    const clicks = await this.getClicksFromDatabase(requestDTO);
-    console.log(clicks, 'clicks');
-    const collection = this.getGamesCollection();
-    console.log(collection, 'collcetion');
-    console.log(new firestore.FieldPath(doc));
-    await collection.update(new firestore.FieldPath(doc), clicks);
+    const gameClicks = await this.firestoreRepository.read(doc);
+
+    let newClicks = 1;
+
+    if (gameClicks) {
+      newClicks = gameClicks.clicks + 1;
+    }
+
+    await this.firestoreRepository.create(doc, {
+      id: doc,
+      clicks: newClicks,
+    });
   }
 }
