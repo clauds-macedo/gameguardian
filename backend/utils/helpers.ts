@@ -8,7 +8,7 @@ export function safeExtractImage({ config, key, obj }: ISafeObject) {
   return obj[key] ? obj[key].url : config[key];
 }
 
-export const buildEpicGamesURL = (queryParams: any) => {
+export const buildEpicGamesURL = () => {
   const urlParams = {
     allowCountries: "BR",
     category: "games%2Fedition%2Fbase",
