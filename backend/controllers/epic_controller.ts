@@ -19,8 +19,7 @@ class EpicController {
 
   getDiscountedGames = async (req: Request, res: Response) => {
     try {
-      const queryParams = req.query;
-      const url = buildEpicGamesURL(queryParams);
+      const url = buildEpicGamesURL();
 
       const response = await fetch(url, {
         method: "GET",

@@ -1,46 +1,13 @@
-import { getGamesInPromotion } from "../modules/services/get_games_in_promotion";
 import { Request, Response } from "express";
-import axios from "axios";
-import { getGamesInPromotionByDevSteam } from "../modules/services/get_games_by_dev_steam";
-import { platforms } from "../utils/platforms";
-
-const gameDetailsPage =
-  "https://store.steampowered.com/api/appdetails?cc=br&l=pt&appids=";
-
-interface GameResponse {
-  title: string;
-  description: string;
-  screenshots: {
-    id: number;
-    path_thumbnail: string;
-    path_full: string;
-  }[];
-}
+import { SteamGameFetcher } from "../modules/fetchers/SteamGameFetcher";
+import { GameResponse } from "../modules/fetchers/GameFetcher";
 
 class SteamController {
-  private async buildGameResponse(id: string): Promise<GameResponse> {
-    const { data } = await axios.get(gameDetailsPage + id);
-
-    return {
-      title: data[id].data.name,
-      description: data[id].data.detailed_description,
-      screenshots: data[id].data.screenshots,
-    };
-  }
-
-  private async fetchGames(ids: string[]): Promise<GameResponse[]> {
-    const games = await Promise.all(
-      ids.map((id) => this.buildGameResponse(id))
-    );
-
-    return games;
-  }
+  private fetcher = new SteamGameFetcher();
 
   async getPromotions(req: Request, res: Response) {
     try {
-      const ids = await getGamesInPromotion(platforms.STEAM);
-
-      const games: GameResponse[] = await this.fetchGames(ids);
+      const games: GameResponse[] = await this.fetcher.getGamesInPromotion();
       return res.status(200).json(games);
     } catch (error) {
       console.log(error);
@@ -51,19 +18,16 @@ class SteamController {
   }
 
   async getPromotionsByDeveloper(req: Request, res: Response) {
-    const devName: string = req.params.developer;
+    const { developer } = req.params; 
 
     try {
-      const ids = await getGamesInPromotionByDevSteam(devName);
-
-      const games: GameResponse[] = await this.fetchGames(ids);
-
+      const games = await this.fetcher.getPromotionsByDeveloper(developer);
       return res.status(200).json(games);
     } catch (error) {
       console.log(error);
       return res
         .status(500)
-        .json({ error: `Failed to get games from ${devName}` });
+        .json({ error: `Failed to get games from ${developer}` });
     }
   }
 }
