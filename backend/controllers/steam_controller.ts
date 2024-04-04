@@ -2,6 +2,7 @@ import { getGamesInPromotion } from "../modules/services/get_games_in_promotion"
 import { Request, Response } from "express";
 import axios from "axios";
 import { getGamesInPromotionByDevSteam } from "../modules/services/get_games_by_dev_steam";
+import { platforms } from "../utils/platforms";
 
 const gameDetailsPage =
   "https://store.steampowered.com/api/appdetails?cc=br&l=pt&appids=";
@@ -37,7 +38,7 @@ class SteamController {
 
   async getPromotions(req: Request, res: Response) {
     try {
-      const ids = await getGamesInPromotion("steam");
+      const ids = await getGamesInPromotion(platforms.STEAM);
 
       const games: GameResponse[] = await this.fetchGames(ids);
       return res.status(200).json(games);
