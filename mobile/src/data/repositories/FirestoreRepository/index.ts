@@ -14,6 +14,7 @@ export class FirestoreRepository<T> {
   async read(id: string): Promise<T | undefined> {
     const documentSnapshot = await this.getCollectionRef().doc(id).get();
     if (!documentSnapshot.exists) {
+      this.create(id, {});
       return undefined;
     }
     return documentSnapshot.data() as T;

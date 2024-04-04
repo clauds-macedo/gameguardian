@@ -1,6 +1,7 @@
 import { IGameClicksDTO } from '../../../domain/dtos/game-clicks.dto';
 import { GameClicks } from '../../../domain/entities/game-clicks';
 import { IGameClicksRepository } from '../../../domain/repositories/IGameClicksRepository';
+import { currentDate } from '../../../utils/current-date';
 import { FirestoreRepository } from '../FirestoreRepository';
 
 export class GameClicksRepository implements IGameClicksRepository {
@@ -12,17 +13,18 @@ export class GameClicksRepository implements IGameClicksRepository {
 
   async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
-    const gameClicks = await this.firestoreRepository.read(doc);
+    const gameClicks = await this.firestoreRepository.read(currentDate);
 
     let newClicks = 1;
 
-    if (gameClicks) {
-      newClicks = gameClicks.clicks + 1;
+    if (gameClicks?.[doc]) {
+      newClicks = gameClicks[doc].clicks + 1;
     }
 
-    await this.firestoreRepository.create(doc, {
-      id: doc,
-      clicks: newClicks,
+    await this.firestoreRepository.update(currentDate, {
+      [doc]: {
+        clicks: newClicks,
+      },
     });
   }
 }

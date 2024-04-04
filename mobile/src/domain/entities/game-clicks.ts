@@ -1,3 +1,6 @@
-export interface GameClicks {
-  clicks: number;
-}
+export type GameClicks = Record<
+  string,
+  {
+    clicks: number;
+  }
+>;
