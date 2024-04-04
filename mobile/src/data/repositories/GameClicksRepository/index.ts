@@ -14,16 +14,11 @@ export class GameClicksRepository implements IGameClicksRepository {
   async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
     const gameClicks = await this.firestoreRepository.read(currentDate);
-
-    let newClicks = 1;
-
-    if (gameClicks?.[doc]) {
-      newClicks = gameClicks[doc].clicks + 1;
-    }
+    const currentClicks = gameClicks?.[doc]?.clicks || 0;
 
     await this.firestoreRepository.update(currentDate, {
       [doc]: {
-        clicks: newClicks,
+        clicks: currentClicks + 1,
       },
     });
   }
