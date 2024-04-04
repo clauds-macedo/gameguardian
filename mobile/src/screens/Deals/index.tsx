@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { Card } from '../../components/Card';
 import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 import PageTitle from '../../components/PageTitle';
-import useGameClicks from '../../hooks/useGameClicks';
+import { gameClicksUseCase } from '../../data/usecases/gameClicksUseCase';
 import useLanguage from '../../hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from '../Login/components/Circles';
@@ -12,7 +12,6 @@ import { getSubtitle } from './utils';
 const Deals = () => {
   const { languageStrings } = useLanguage();
   const { name, params } = useAppRoute().route;
-  const { registerClick } = useGameClicks();
 
   return (
     <GeneralScreenContainer>
@@ -72,7 +71,9 @@ const Deals = () => {
             {...item}
             mt={8}
             mb={8}
-            onCardPress={() => registerClick(item.title)}
+            onCardPress={async () =>
+              gameClicksUseCase.register({ doc: item.title })
+            }
           />
         )}
         style={{
