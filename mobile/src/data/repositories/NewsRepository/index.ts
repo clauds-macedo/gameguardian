@@ -5,9 +5,8 @@ import instance from '../../../services/axios';
 
 export class NewsRepository implements INewsRepository {
   async execute(requestDTO: NewsDTO) {
-    const { image, link, title } = (
-      await instance.get<News>(`/news/${requestDTO.url}`)
-    ).data;
-    return { title, image, link };
+    const newsData = (await instance.get<News[]>(`/news/${requestDTO.url}`))
+      .data;
+    return newsData;
   }
 }
