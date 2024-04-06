@@ -38,7 +38,6 @@ export const buildEpicGamesURL = () => {
   });
 
   const url = `${baseUrl}?operationName=${operationName}&variables=${variables}&extensions=${extensions}`;
-  console.log(variables);
   return url;
 };
   
@@ -55,9 +54,7 @@ export const getDiscountedGamesData = (games: any) => {
       discount_original_price: game.price.totalPrice.originalPrice / 100,
       discount_pct: discountPercentage + "%",
       discount_final_price: game.price.totalPrice.discountPrice / 100,
-      link: game.urlSlug
-        ? `https://www.epicgames.com/store/pt-BR/p/${game.urlSlug}`
-        : "#",
+      link: `https://www.epicgames.chttps://store.epicgames.com/pt-BR/browse?q=${game.title}&sortBy=relevancy&sortDir=DESC&count=40om`,
       image_src: game.keyImages.find(
         (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
       ).url,
