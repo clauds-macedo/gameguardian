@@ -1,21 +1,19 @@
-import { GameResponse, GameFetcher } from "./GameFetcher";
+import { GameFetcher } from "./GameFetcher";
 import { getHTMLDocumentByUrl } from "../../utils/getHTMLDocumentByUrl";
-import { SteamResponseBuilder } from "../responseBuilders/SteamResponseBuilder";
 import axios from "axios";
+import {  ResponseFormatter } from "../responseFormatters/ResponseFormatter";
 
 const gameDetailsPage =
   "https://store.steampowered.com/api/appdetails?cc=br&l=pt&appids=";
 
 export class SteamGameFetcher implements GameFetcher {
-  private responseBuilder = new SteamResponseBuilder();
-
-  getGamesInPromotion = async (): Promise<GameResponse[]> => {
+  getGamesInPromotion = async (formatter: ResponseFormatter) => {
     const ids = await this.getGamesIdsInPromotion();
     const responses = await Promise.all(
       ids.map((id) => axios.get(gameDetailsPage + id))
     );
 
-    return responses.map((res) => this.responseBuilder.buildGameResponse(res));
+    return formatter.format(responses);
   }
 
   private getGamesIdsInPromotion = async () => {
@@ -39,13 +37,13 @@ export class SteamGameFetcher implements GameFetcher {
     return ids;
   }
 
-  getPromotionsByDeveloper = async (developer: string): Promise<GameResponse[]> => {
+  getPromotionsByDeveloper = async (formatter: ResponseFormatter, developer: string) => {
     const ids = await this.getGamesIdsInPromotionByDev(developer);
     const responses = await Promise.all(
       ids.map((id) => axios.get(gameDetailsPage + id))
     );
 
-    return responses.map((resp) => this.responseBuilder.buildGameResponse(resp));
+    return formatter.format(responses);
   }
 
   private getGamesIdsInPromotionByDev = async (dev: string) => {
@@ -68,7 +66,7 @@ export class SteamGameFetcher implements GameFetcher {
     return idList;
   }
 
-  getFreeGames = async (): Promise<GameResponse[]> => {
+  getFreeGames = async ()  => {
     return []
   }
 
