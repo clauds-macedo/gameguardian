@@ -9,7 +9,7 @@ type LanguageStore = {
 };
 
 export const useLanguageStore = create<LanguageStore>((set) => ({
-  language: 'pt',
+  language: (MMKV.getString('@language') as LanguageStore['language']) ?? 'pt',
   setLanguage: (newLanguage: 'pt' | 'en') => {
     MMKV.set('@language', newLanguage);
     set(() => ({ language: newLanguage }));
