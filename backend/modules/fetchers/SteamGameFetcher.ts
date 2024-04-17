@@ -1,7 +1,7 @@
 import { GameFetcher } from "./GameFetcher";
 import { getHTMLDocumentByUrl } from "../../utils/getHTMLDocumentByUrl";
 import axios from "axios";
-import {  ResponseFormatter } from "../responseFormatters/ResponseFormatter";
+import { ResponseFormatter } from "../responseFormatters/ResponseFormatter";
 
 const gameDetailsPage =
   "https://store.steampowered.com/api/appdetails?cc=br&l=pt&appids=";
@@ -13,7 +13,7 @@ export class SteamGameFetcher implements GameFetcher {
       ids.map((id) => axios.get(gameDetailsPage + id))
     );
 
-    return formatter.format(responses);
+    return await formatter.format(responses);
   }
 
   private getGamesIdsInPromotion = async () => {
@@ -24,11 +24,11 @@ export class SteamGameFetcher implements GameFetcher {
     const $ = await getHTMLDocumentByUrl(URL);
     const promoGamesWithApp = $('a[href*="/app/"]');
 
-    promoGamesWithApp.each((_, element) => { 
+    promoGamesWithApp.each((_, element) => {
       const href = $(element).attr("href");
       if (href) {
         const match = href.match(appIdPattern);
-        if (match) { 
+        if (match) {
           ids.push(match[1]);
         }
       }
@@ -43,7 +43,7 @@ export class SteamGameFetcher implements GameFetcher {
       ids.map((id) => axios.get(gameDetailsPage + id))
     );
 
-    return formatter.format(responses);
+    return await formatter.format(responses);
   }
 
   private getGamesIdsInPromotionByDev = async (dev: string) => {
@@ -59,14 +59,14 @@ export class SteamGameFetcher implements GameFetcher {
       if (href) {
         const match = href.match(idRegex);
         if (match)
-        idList.push(match[1]);
+          idList.push(match[1]);
       }
     })
 
     return idList;
   }
 
-  getFreeGames = async ()  => {
+  getFreeGames = async () => {
     return []
   }
 

@@ -3,7 +3,7 @@ import { ResponseFormatter } from "./ResponseFormatter";
 import { GameResponse } from "../../utils/types";
 
 export class SteamResponseFormatter implements ResponseFormatter {
-  format = (response: AxiosResponse | AxiosResponse[]) => {
+  format = async (response: AxiosResponse | AxiosResponse[]) => {
     let games: GameResponse[] = [];
 
     if (Array.isArray(response)) {
@@ -23,7 +23,8 @@ export class SteamResponseFormatter implements ResponseFormatter {
           originalPrice: price && price.initial_formatted,
           discountedPrice: price && price.final_formatted,
           discountPercent: price && price.discount_percent,
-          link: `https://store.steampowered.com/app/${id}`
+          link: `https://store.steampowered.com/app/${id}`,
+          genres: data.genres.map((obj: any) => obj.description),
         };
       })
     }

@@ -18,6 +18,7 @@ export interface GameResponse {
   discountedPrice: string | undefined;
   discountPercent: string | undefined;
   link: string;
+  genres?: string[];
 };
 
 export interface IGameInfo {

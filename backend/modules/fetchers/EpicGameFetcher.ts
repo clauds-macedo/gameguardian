@@ -13,14 +13,14 @@ export class EpicGameFetcher implements GameFetcher {
       }
     });
 
-    return formatter.format(response);
+    return await formatter.format(response);
   }
 
   getFreeGames = async (formatter: ResponseFormatter) => {
     const url = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
     const response = await axios.get(url);
 
-    return formatter.format(response);
+    return await formatter.format(response);
   }
 
   getPromotionsByDeveloper = async () => {

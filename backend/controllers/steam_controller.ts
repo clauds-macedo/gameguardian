@@ -8,7 +8,7 @@ class SteamController {
 
   async getPromotions(req: Request, res: Response) {
     try {
-      const games: GameResponse[] = 
+      const games: GameResponse[] =
         await this.fetcher.getGamesInPromotion(new SteamResponseFormatter());
 
       return res.status(200).json(games);
@@ -21,11 +21,11 @@ class SteamController {
   }
 
   async getPromotionsByDeveloper(req: Request, res: Response) {
-    const { developer } = req.params; 
+    const { developer } = req.params;
 
     try {
       const games = await this.fetcher.getPromotionsByDeveloper(
-        new SteamResponseFormatter(), 
+        new SteamResponseFormatter(),
         developer
       );
 
