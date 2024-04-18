@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { IGameInfo, ISafeObject } from "./types";
 
 export function safeExtract({ config, key, obj }: ISafeObject) {
@@ -8,7 +9,7 @@ export function safeExtractImage({ config, key, obj }: ISafeObject) {
   return obj[key] ? obj[key].url : config[key];
 }
 
-export const buildEpicGamesURL = (queryParams: any) => {
+export const buildEpicGamesURL = () => {
   const urlParams = {
     allowCountries: "BR",
     category: "games%2Fedition%2Fbase",
@@ -38,33 +39,43 @@ export const buildEpicGamesURL = (queryParams: any) => {
   });
 
   const url = `${baseUrl}?operationName=${operationName}&variables=${variables}&extensions=${extensions}`;
-  console.log(variables);
   return url;
 };
-  
 
-export const getDiscountedGamesData = (games: any) => {
-  const all_games_discounted: IGameInfo[] = [];
+const buildEpicGenresUrl = (offerId: string, sandboxId: string) => {
+  const urlParams = {
+    locale: "pt-BR",
+    country: "BR",
+    offerId,
+    sandboxId,
+  };
 
-  for (const game of games) {
-    const discountAmount = game.price.totalPrice.originalPrice - game.price.totalPrice.discountPrice;
-    const discountPercentage = Math.floor(discountAmount / game.price.totalPrice.originalPrice * 100);
+  const baseUrl = "https://store.epicgames.com/graphql";
+  const operationName = "getCatalogOffer";
+  const variables = JSON.stringify(urlParams);
+  const extensions = JSON.stringify({
+    persistedQuery: {
+      version: 1,
+      sha256Hash:
+        "c4ad546ad2757b60ff13ace19ffaf134abb23cb663244de34771a0444abfdf33",
+    },
+  });
 
-    const game_info = {
-      title: game.title,
-      discount_original_price: game.price.totalPrice.originalPrice / 100,
-      discount_pct: discountPercentage + "%",
-      discount_final_price: game.price.totalPrice.discountPrice / 100,
-      link: game.urlSlug
-        ? `https://www.epicgames.com/store/pt-BR/p/${game.urlSlug}`
-        : "#",
-      image_src: game.keyImages.find(
-        (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
-      ).url,
-    };
+  const url = `${baseUrl}?operationName=${operationName}&variables=${variables}&extensions=${extensions}`;
+  return url;
+}
 
-    all_games_discounted.push(game_info);
-  }
+export const getEpicGenres = async (offerId: string, namespace: string): Promise<string[]> => {
+  const response = await axios.get(
+    buildEpicGenresUrl(offerId, namespace), {
+    headers: {
+      Accept: "application/json",
+      "User-Agent": "Insomnia/2023.5.6",
+    }
+  });
 
-  return all_games_discounted;
-};
+  const { catalogOffer } = response.data.data.Catalog;
+  return catalogOffer.tags
+    .filter((tag: any) => tag.groupName === "genre")
+    .map((tag: any) => tag.name)
+}

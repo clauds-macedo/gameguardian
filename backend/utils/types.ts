@@ -8,6 +8,19 @@ export interface ISafeObject {
   config: AnyObject;
 }
 
+export interface GameResponse {
+  title: string;
+  description: string;
+  thumbnail: string;
+  developers: string[];
+  publishers: string[];
+  originalPrice: string;
+  discountedPrice: string | undefined;
+  discountPercent: string | undefined;
+  link: string;
+  genres?: string[];
+};
+
 export interface IGameInfo {
   title: string;
   discount_original_price: number;
