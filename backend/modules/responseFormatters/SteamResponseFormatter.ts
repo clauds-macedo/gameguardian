@@ -25,6 +25,11 @@ export class SteamResponseFormatter implements ResponseFormatter {
           discountPercent: price && price.discount_percent,
           link: `https://store.steampowered.com/app/${id}`,
           genres: data.genres.map((obj: any) => obj.description),
+          platforms: {
+            linux: data.platforms.linux,
+            windows: data.platforms.windows,
+            macOs: data.platforms.mac,
+          }
         };
       })
     }

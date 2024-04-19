@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { ResponseFormatter } from "./ResponseFormatter";
 import { GameResponse } from "../../utils/types";
-import { getEpicGenres } from "../../utils/helpers";
+import { getEpicGenresAndPlatforms } from "../../utils/helpers";
 
 export class EpicFreeResponseFormatter implements ResponseFormatter {
   format = async (response: AxiosResponse | AxiosResponse[]) => {
@@ -11,7 +11,9 @@ export class EpicFreeResponseFormatter implements ResponseFormatter {
       games = elements
         .filter((game: any) => game.price.totalPrice.discountPrice === 0);
 
-      const genres = await Promise.all(games.map((game: any) => getEpicGenres(game.id, game.namespace)));
+      const extraInfo = await Promise.all(
+        games.map((game: any) => getEpicGenresAndPlatforms(game.id, game.namespace))
+      );
 
       games = games.map((game: any, idx: number) => ({
         title: game.title,
@@ -25,7 +27,12 @@ export class EpicFreeResponseFormatter implements ResponseFormatter {
         thumbnail: game.keyImages.find(
           (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
         ).url,
-        genres: genres[idx],
+        genres: extraInfo[idx].genres,
+        platforms: {
+          windows: extraInfo[idx].platforms.includes("Windows"),
+          linux: extraInfo[idx].platforms.includes("Linux"),
+          macOs: extraInfo[idx].platforms.includes("Mac OS"),
+        }
       }));
     }
     return games;
