@@ -4,11 +4,13 @@ import useAppRoute from '../../../../routes/hooks/useAppRoute';
 import { CarouselContainer, ItemView, StyledImage } from './styles';
 import type { CarouselProps } from './types';
 import { ITEM_SPACING } from './utils';
+
 const Carousel: React.FC<CarouselProps> = ({ data, scrollX }) => {
   const { navigate } = useAppRoute().navigation;
   const onCardPress = (platform: string) => {
     navigate('PlatformDeals', { platform });
   };
+
   return (
     <CarouselContainer
       data={data}
