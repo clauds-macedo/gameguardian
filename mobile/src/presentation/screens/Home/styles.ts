@@ -1,6 +1,6 @@
+import colors from '@/infra/global/colors';
+import styles from '@/infra/global/styles';
 import { styled } from 'styled-components/native';
-import colors from '../../../infra/global/colors';
-import styles from '../../../infra/global/styles';
 
 export const Container = styled.View`
   flex: 1;

@@ -1,8 +1,8 @@
+import colors from '@infra/global/colors';
+import fonts from '@infra/global/fonts';
 import { styled } from 'styled-components/native';
+import type { IMainButton } from './types';
 import { getBackgroundColor } from './utils';
-import { IMainButton } from './types';
-import colors from '../../../infra/global/colors';
-import fonts from '../../../infra/global/fonts';
 
 export const StyledButton = styled.TouchableOpacity<IMainButton>`
   height: 57px;

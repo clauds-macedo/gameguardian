@@ -1,4 +1,4 @@
-import strings from "../../infra/global/strings";
+import strings from "@infra/global/strings";
 import { useLanguageStore } from "../../stores/language";
 
 

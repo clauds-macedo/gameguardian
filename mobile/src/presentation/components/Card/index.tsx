@@ -1,4 +1,5 @@
 import React from 'react';
+import useLanguage from '../../hooks/useLanguage';
 import {
   ButtonContainer,
   Container,
@@ -8,8 +9,7 @@ import {
   TextContainer,
   Title,
 } from './styles';
-import { CardProps } from './types';
-import useLanguage from '../../hooks/useLanguage';
+import type { CardProps } from './types';
 
 export const Card: React.FC<CardProps> = ({
   discountedPrice,

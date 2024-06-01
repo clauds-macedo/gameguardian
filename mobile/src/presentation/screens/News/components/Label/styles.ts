@@ -1,6 +1,6 @@
+import colors from '@infra/global/colors';
+import fonts from '@infra/global/fonts';
 import styled from 'styled-components/native';
-import colors from '../../../../../infra/global/colors';
-import fonts from '../../../../../infra/global/fonts';
 
 export const Label = styled.Text`
   font-size: 14px;

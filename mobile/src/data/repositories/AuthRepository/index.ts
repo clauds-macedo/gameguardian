@@ -1,6 +1,6 @@
 import auth from '@react-native-firebase/auth';
-import { AuthCredentialsDTO } from '../../../domain/dtos/auth-credentials.dto';
-import { RegisterDTO } from '../../../domain/dtos/register-credentials.dto';
+import type { AuthCredentialsDTO } from '../../../domain/dtos/auth-credentials.dto';
+import type { RegisterDTO } from '../../../domain/dtos/register-credentials.dto';
 import type { User } from '../../../domain/entities/user';
 import type { IAuthRepository } from '../../../domain/repositories/IAuthRepository';
 

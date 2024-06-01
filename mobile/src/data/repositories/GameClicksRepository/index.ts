@@ -1,6 +1,6 @@
-import { IGameClicksDTO } from '../../../domain/dtos/game-clicks.dto';
-import { GameClicks } from '../../../domain/entities/game-clicks';
-import { IGameClicksRepository } from '../../../domain/repositories/IGameClicksRepository';
+import type { IGameClicksDTO } from '../../../domain/dtos/game-clicks.dto';
+import type { GameClicks } from '../../../domain/entities/game-clicks';
+import type { IGameClicksRepository } from '../../../domain/repositories/IGameClicksRepository';
 import { currentDate } from '../../../utils/current-date';
 import { FirestoreRepository } from '../FirestoreRepository';
 

@@ -1,7 +1,7 @@
+import colors from '@infra/global/colors';
 import { Dimensions } from 'react-native';
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
-import colors from '../../../infra/global/colors';
 
 const { width } = Dimensions.get('window');
 

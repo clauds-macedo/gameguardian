@@ -1,5 +1,5 @@
-import { GameDTO } from '../dtos/game.dto';
-import { IGameRepository } from '../repositories/IGameRepository';
+import type { GameDTO } from '../dtos/game.dto';
+import type { IGameRepository } from '../repositories/IGameRepository';
 
 export class GameUseCase {
   constructor(private gameRepository: IGameRepository) {}

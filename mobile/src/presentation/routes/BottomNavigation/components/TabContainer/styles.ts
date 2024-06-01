@@ -1,6 +1,7 @@
+import colors from '@infra/global/colors';
 import { styled } from 'styled-components/native';
-import colors from '../../../../../infra/global/colors';
-import { IContainer } from './interface';
+import type { IContainer } from './interface';
+
 export const Container = styled.View<Pick<IContainer, 'variant'>>`
   height: 60px;
   align-items: center;

@@ -1,4 +1,4 @@
-import { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
+import type { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import React from 'react';
 import useLanguage from '../../../../hooks/useLanguage';
 import TabContainer from '../../../BottomNavigation/components/TabContainer';

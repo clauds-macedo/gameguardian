@@ -1,5 +1,5 @@
-import colors from '../../../infra/global/colors';
-import { IMainButton } from './types';
+import colors from '@infra/global/colors';
+import type { IMainButton } from './types';
 
 const variantToColorMap = {
   primary: colors.primaryButton,

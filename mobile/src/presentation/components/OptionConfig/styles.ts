@@ -1,7 +1,7 @@
+import colors from '@/infra/global/colors';
+import fonts from '@/infra/global/fonts';
+import styles from '@/infra/global/styles';
 import { styled } from 'styled-components/native';
-import colors from '../../../infra/global/colors';
-import styles from '../../../infra/global/styles';
-import fonts from '../../../infra/global/fonts';
 
 export const Container = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,

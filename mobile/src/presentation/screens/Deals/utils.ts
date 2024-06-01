@@ -1,4 +1,4 @@
-import useLanguage from '../../../presentation/hooks/useLanguage';
+import useLanguage from '@hooks/useLanguage';
 
 export const getSubtitle = (route: string, platform: string) => {
   const { languageStrings } = useLanguage();

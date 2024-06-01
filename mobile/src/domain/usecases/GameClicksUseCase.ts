@@ -1,5 +1,5 @@
-import { IGameClicksDTO } from '../dtos/game-clicks.dto';
-import { IGameClicksRepository } from '../repositories/IGameClicksRepository';
+import type { IGameClicksDTO } from '../dtos/game-clicks.dto';
+import type { IGameClicksRepository } from '../repositories/IGameClicksRepository';
 
 export class GameClicksUseCase {
   constructor(private gameClicksRepository: IGameClicksRepository) {}

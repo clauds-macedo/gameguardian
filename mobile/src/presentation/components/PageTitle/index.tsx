@@ -1,7 +1,7 @@
 import React from 'react';
 import Label from './components/Label';
 import { Container } from './styles';
-import { IPageTitle } from './types';
+import type { IPageTitle } from './types';
 
 const PageTitle: React.FC<IPageTitle> = ({ title = '', subtitle = '' }) => (
   <Container>

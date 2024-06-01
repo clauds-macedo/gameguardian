@@ -1,6 +1,6 @@
+import { authConfig } from '@infra/config/auth-config';
+import { realtimeConfig } from '@infra/config/database-config';
 import { useCallback } from 'react';
-import { authConfig } from '../../../../../infra/config/auth-config';
-import { realtimeConfig } from '../../../../../infra/config/database-config';
 import type { IFavourite } from './types';
 
 const useFavouriteLogic = ({ favourite, title }: IFavourite) => {

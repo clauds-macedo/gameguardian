@@ -1,11 +1,12 @@
 import { Circle, Ellipse, Svg } from 'react-native-svg';
-import { ICircleProps } from './types';
+import type { ICircleProps } from './types';
 import { getCirclePosition } from './utils';
 
 export const Circles: React.FC<ICircleProps> = (props) => {
+  const { sideX, sideY, style } = props;
   const positionProps = getCirclePosition({
-    sideX: props.sideX,
-    sideY: props.sideY,
+    sideX,
+    sideY,
   });
 
   return (
@@ -16,7 +17,7 @@ export const Circles: React.FC<ICircleProps> = (props) => {
       fill="none"
       style={[
         { position: 'absolute', ...positionProps, opacity: 0.3 },
-        props.style,
+        style,
       ]}
     >
       <Circle cx="110.5" cy="110.5" r="109.5" stroke="#393F4B" />

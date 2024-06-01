@@ -33,10 +33,7 @@
     "no-unused-vars": "off",
     "no-empty-function": "off",
     "no-use-before-define": ["error", { "variables": false }],
-    "react/prop-types": [
-      "error",
-      { "ignore": ["navigation", "navigation.navigate"] }
-    ],
+    "react/prop-types": "off",
     "react-native/no-inline-styles": "off",
     "max-lines": ["error", { "max": 500 }]
   }

@@ -1,6 +1,7 @@
-import firestore, {
+import type {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
 
 export const realtimeConfig = {
   // Referência a um documento em um determinado caminho

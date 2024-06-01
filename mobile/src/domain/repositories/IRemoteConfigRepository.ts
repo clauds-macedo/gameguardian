@@ -1,5 +1,5 @@
 import type { RemoteConfigKeys } from '../../global/types';
-import { RemoteConfigValue } from '../entities/remote-config';
+import type { RemoteConfigValue } from '../entities/remote-config';
 
 export interface IRemoteConfigRepository {
   establishRemoteConfigConnection: () => Promise<void>;

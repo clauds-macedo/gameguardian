@@ -1,8 +1,7 @@
+import { authConfig } from '@/infra/config/auth-config';
+import { realtimeConfig } from '@/infra/config/database-config';
 import { useState } from 'react';
 import useAppRoute from '../../routes/hooks/useAppRoute';
-import { authConfig } from '../../../infra/config/auth-config';
-import { realtimeConfig } from '../../../infra/config/database-config';
-import { authenticationUseCase } from '../../../data/usecases/authenticationUseCase';
 
 const INITIAL_STATE = {
   username: '',

@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Modalize } from 'react-native-modalize';
+import type { Modalize } from 'react-native-modalize';
 
 export const useModalize = () => {
   const [uri, setUri] = useState('');

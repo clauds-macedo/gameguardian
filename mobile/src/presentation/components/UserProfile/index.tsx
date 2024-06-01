@@ -1,9 +1,9 @@
+import { authConfig } from '@/infra/config/auth-config';
 import React from 'react';
 import Label from '../PageTitle/components/Label';
 import ImageProfile from './components/ImageProfile';
 import OutsideCircle from './components/OutsideCircle';
 import { Container } from './styles';
-import { authConfig } from '../../../infra/config/auth-config';
 
 const UserProfile = () => {
   const user = authConfig.getCurrentUser();
