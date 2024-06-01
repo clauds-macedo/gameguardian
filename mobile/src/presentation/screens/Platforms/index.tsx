@@ -1,7 +1,7 @@
+import colors from '@infra/global/colors';
 import React, { useRef } from 'react';
 import { Animated } from 'react-native';
 import { ExpandingDot } from 'react-native-animated-pagination-dots';
-import colors from '../../../infra/global/colors';
 import Carousel from './components/Carousel';
 import useGetPlatforms from './hooks/useGetPlatforms';
 import { Container } from './styles';

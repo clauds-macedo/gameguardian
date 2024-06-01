@@ -1,5 +1,5 @@
+import { remoteConfigUseCase } from '@/data/usecases/remoteConfigUseCase';
 import { useCallback, useEffect, useState } from 'react';
-import { remoteConfigUseCase } from '../../../data/usecases/remoteConfigUseCase';
 
 export interface PlatformInfo {
   name: string;
@@ -14,7 +14,6 @@ const useGetPlatforms = () => {
   const getPlatforms = useCallback(async () => {
     await remoteConfigUseCase.establishRemoteConfigConnection();
     const value = await remoteConfigUseCase.getValue('platforms');
-    console.log(value.asArray());
     if (value) {
       setPlatforms(value.asArray() as PlatformInfo[]);
     }
