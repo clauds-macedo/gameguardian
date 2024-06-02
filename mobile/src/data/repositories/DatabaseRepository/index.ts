@@ -4,16 +4,14 @@ import firestore from '@react-native-firebase/firestore';
 export class DatabaseRepository<T> implements IDatabaseRepository<T> {
   private collectionPath: string = "";
 
-  constructor(initialPath?: string) {
-    if (initialPath) {
-      this.collectionPath = initialPath;
-    }
+  constructor(path?: string) {
+    if (path) this.collectionPath = path;
   }
 
   setCollectionPath(path: string) {
     this.collectionPath = path;
   }
-  
+
   private getCollectionRef() {
     return firestore().collection(this.collectionPath);
   }
