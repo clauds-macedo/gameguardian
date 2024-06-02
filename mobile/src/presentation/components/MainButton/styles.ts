@@ -1,5 +1,5 @@
-import colors from '@infra/global/colors';
-import fonts from '@infra/global/fonts';
+import colors from '@/infra/global/colors';
+import fonts from '@/infra/global/fonts';
 import { styled } from 'styled-components/native';
 import type { IMainButton } from './types';
 import { getBackgroundColor } from './utils';

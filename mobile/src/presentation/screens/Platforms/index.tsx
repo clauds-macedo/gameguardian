@@ -1,4 +1,4 @@
-import colors from '@infra/global/colors';
+import colors from '@/infra/global/colors';
 import React, { useRef } from 'react';
 import { Animated } from 'react-native';
 import { ExpandingDot } from 'react-native-animated-pagination-dots';
