@@ -2,10 +2,10 @@ import type { IGameClicksDTO } from '@domain/dtos/game-clicks.dto';
 import type { GameClicks } from '@domain/entities/game-clicks';
 import type { IGameClicksRepository } from '@domain/repositories/IGameClicksRepository';
 import { currentDate } from '@utils/current-date';
-import { FirestoreRepository } from '../FirestoreRepository';
+import { DatabaseRepository } from '../DatabaseRepository';
 
 export class GameClicksRepository
-  extends FirestoreRepository<GameClicks>
+  extends DatabaseRepository<GameClicks>
   implements IGameClicksRepository
 {
   async register(requestDTO: IGameClicksDTO): Promise<void> {

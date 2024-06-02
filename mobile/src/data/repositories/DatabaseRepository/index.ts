@@ -1,9 +1,19 @@
 import type { IDatabaseRepository } from '@/domain/repositories/IDatabaseRepository';
 import firestore from '@react-native-firebase/firestore';
 
-export class FirestoreRepository<T> implements IDatabaseRepository<T> {
-  constructor(private collectionPath: string) {}
+export class DatabaseRepository<T> implements IDatabaseRepository<T> {
+  private collectionPath: string = "";
 
+  constructor(initialPath?: string) {
+    if (initialPath) {
+      this.collectionPath = initialPath;
+    }
+  }
+
+  setCollectionPath(path: string) {
+    this.collectionPath = path;
+  }
+  
   private getCollectionRef() {
     return firestore().collection(this.collectionPath);
   }
