@@ -1,4 +1,5 @@
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import type { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import { MMKV as MMKVStorage } from 'react-native-mmkv';
 
 const MMKV = new MMKVStorage();

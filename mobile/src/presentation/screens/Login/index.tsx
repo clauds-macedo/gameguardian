@@ -1,11 +1,11 @@
 /* eslint-disable global-require */
+import Input from '@components/Input';
+import MainButton from '@components/MainButton';
+import Label from '@components/PageTitle/components/Label';
+import { authenticationUseCase } from '@data/usecases/authenticationUseCase';
+import useLanguage from '@hooks/useLanguage';
+import useAppRoute from '@routes/hooks/useAppRoute';
 import React, { useState } from 'react';
-import Input from '../../components/Input';
-import MainButton from '../../components/MainButton';
-import Label from '../../components/PageTitle/components/Label';
-import { authenticationUseCase } from '../../../data/usecases/authenticationUseCase';
-import useLanguage from '../../../presentation/hooks/useLanguage';
-import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from './components/Circles';
 import {
   ButtonContainer,

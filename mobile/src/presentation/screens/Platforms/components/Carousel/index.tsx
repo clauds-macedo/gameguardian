@@ -10,6 +10,7 @@ const Carousel: React.FC<CarouselProps> = ({ data, scrollX }) => {
   const onCardPress = (platform: string) => {
     navigate('PlatformDeals', { platform });
   };
+
   return (
     <CarouselContainer
       data={data}

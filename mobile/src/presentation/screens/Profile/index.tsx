@@ -1,13 +1,13 @@
+import { authConfig } from '@/infra/config/auth-config';
 import React from 'react';
-import GeneralScreenContainer from '../../components/GeneralScreenContainer';
-import UserProfile from '../../components/UserProfile';
 import useLanguage from '../../../presentation/hooks/useLanguage';
-import useAppRoute from '../../routes/hooks/useAppRoute';
-import { options } from './utils';
-import { authConfig } from '../../../infra/config/auth-config';
+import GeneralScreenContainer from '../../components/GeneralScreenContainer';
 import MainButton from '../../components/MainButton';
 import OptionConfig from '../../components/OptionConfig';
 import PageTitle from '../../components/PageTitle';
+import UserProfile from '../../components/UserProfile';
+import useAppRoute from '../../routes/hooks/useAppRoute';
+import { options } from './utils';
 
 const Profile: React.FC = () => {
   const { languageStrings } = useLanguage();

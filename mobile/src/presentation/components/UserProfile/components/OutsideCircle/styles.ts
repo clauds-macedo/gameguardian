@@ -1,6 +1,6 @@
+import colors from '@infra/global/colors';
 import { Circle as SVGCircle } from 'react-native-svg';
 import styled from 'styled-components/native';
-import colors from '../../../../../infra/global/colors';
 
 export const SvgContainer = styled.View`
   align-items: center;

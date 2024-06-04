@@ -1,7 +1,7 @@
+import colors from '@infra/global/colors';
+import fonts from '@infra/global/fonts';
 import styled from 'styled-components/native';
-import { CardProps } from './types';
-import colors from '../../../infra/global/colors';
-import fonts from '../../../infra/global/fonts';
+import type { CardProps } from './types';
 
 export const Container = styled.View<Pick<CardProps, 'mb' | 'mt'>>`
   flex-direction: row;

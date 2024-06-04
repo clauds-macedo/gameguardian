@@ -1,7 +1,8 @@
-import {
+import type {
   NavigationProp,
   ParamListBase,
-  RouteProp,
+  RouteProp} from '@react-navigation/native';
+import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';

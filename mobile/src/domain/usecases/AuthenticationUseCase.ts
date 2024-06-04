@@ -1,7 +1,7 @@
-import { AuthCredentialsDTO } from '../dtos/auth-credentials.dto';
-import { RegisterDTO } from '../dtos/register-credentials.dto';
-import { User } from '../entities/user';
-import { IAuthRepository } from '../repositories/IAuthRepository';
+import type { AuthCredentialsDTO } from '../dtos/auth-credentials.dto';
+import type { RegisterDTO } from '../dtos/register-credentials.dto';
+import type { User } from '../entities/user';
+import type { IAuthRepository } from '../repositories/IAuthRepository';
 
 export class AuthenticationUseCase {
   constructor(private authRepository: IAuthRepository) {}

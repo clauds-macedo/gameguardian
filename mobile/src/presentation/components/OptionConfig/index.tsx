@@ -1,9 +1,9 @@
+import colors from '@infra/global/colors';
 import React from 'react';
-import colors from '../../../infra/global/colors';
 import useLanguage from '../../../presentation/hooks/useLanguage';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Container, OptionLabel } from './styles';
-import { IOptionConfig } from './types';
+import type { IOptionConfig } from './types';
 
 const OptionConfig: React.FC<IOptionConfig> = ({
   icon,

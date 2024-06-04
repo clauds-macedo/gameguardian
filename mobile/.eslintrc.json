@@ -16,6 +16,7 @@
     "import/prefer-default-export": "off",
     "no-undef": "off",
     "no-shadow": "off",
+    "import/order": "off",
     "no-underscore-dangle": "off",
     "no-restricted-globals": "off",
     "react/jsx-props-no-spreading": "off",
@@ -25,16 +26,14 @@
     "react/jsx-no-bind": "off",
     "no-param-reassign": "off",
     "eslint-plugin-import/no-unresolved": "off",
+    "@typescript-eslint/consistent-type-imports": "error",
     "react/jsx-filename-extension": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "no-unused-vars": "off",
     "no-empty-function": "off",
     "no-use-before-define": ["error", { "variables": false }],
-    "react/prop-types": [
-      "error",
-      { "ignore": ["navigation", "navigation.navigate"] }
-    ],
+    "react/prop-types": "off",
     "react-native/no-inline-styles": "off",
     "max-lines": ["error", { "max": 500 }]
   }

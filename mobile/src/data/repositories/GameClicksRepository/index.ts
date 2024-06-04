@@ -1,22 +1,19 @@
-import { IGameClicksDTO } from '../../../domain/dtos/game-clicks.dto';
-import { GameClicks } from '../../../domain/entities/game-clicks';
-import { IGameClicksRepository } from '../../../domain/repositories/IGameClicksRepository';
-import { currentDate } from '../../../utils/current-date';
-import { FirestoreRepository } from '../FirestoreRepository';
+import type { IGameClicksDTO } from '@domain/dtos/game-clicks.dto';
+import type { GameClicks } from '@domain/entities/game-clicks';
+import type { IGameClicksRepository } from '@domain/repositories/IGameClicksRepository';
+import { currentDate } from '@utils/current-date';
+import { DatabaseRepository } from '../DatabaseRepository';
 
-export class GameClicksRepository implements IGameClicksRepository {
-  private firestoreRepository: FirestoreRepository<GameClicks>;
-
-  constructor() {
-    this.firestoreRepository = new FirestoreRepository<GameClicks>('games');
-  }
-
+export class GameClicksRepository
+  extends DatabaseRepository<GameClicks>
+  implements IGameClicksRepository
+{
   async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
-    const gameClicks = await this.firestoreRepository.read(currentDate);
+    const gameClicks = await this.read(currentDate);
     const currentClicks = gameClicks?.[doc]?.clicks || 0;
 
-    await this.firestoreRepository.update(currentDate, {
+    await this.update(currentDate, {
       [doc]: {
         clicks: currentClicks + 1,
       },

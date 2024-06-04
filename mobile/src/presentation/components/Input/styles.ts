@@ -1,6 +1,6 @@
+import colors from '@infra/global/colors';
 import { styled } from 'styled-components/native';
-import colors from '../../../infra/global/colors';
-import { InputProps } from './types';
+import type { InputProps } from './types';
 
 export const StyledInput = styled.TextInput.attrs({
   placeholderTextColor: colors.primaryText,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMainButton } from './types';
+import type { IMainButton } from './types';
 import { ButtonText, StyledButton } from './styles';
 
 const MainButton: React.FC<IMainButton> = ({

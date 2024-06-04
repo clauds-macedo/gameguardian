@@ -2,5 +2,5 @@ import { AuthenticationUseCase } from '../../domain/usecases/AuthenticationUseCa
 import { AuthRepository } from '../repositories/AuthRepository';
 
 export const authenticationUseCase = new AuthenticationUseCase(
-  new AuthRepository()
+  new AuthRepository('users')
 );

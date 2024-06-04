@@ -1,7 +1,7 @@
-import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import colors from '@infra/global/colors';
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import colors from '../../../../../infra/global/colors';
 import { ElevatedBackground } from '../ElevatedBackground';
 import TabContainer from '../TabContainer';
 import { iconsByRouteName } from './utils';

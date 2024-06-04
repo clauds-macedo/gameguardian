@@ -1,7 +1,7 @@
+import colors from '@/infra/global/colors';
+import fonts from '@/infra/global/fonts';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-import colors from '../../../infra/global/colors';
-import fonts from '../../../infra/global/fonts';
 
 export const Container = styled.View`
   flex: 1;
