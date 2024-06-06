@@ -1,24 +1,23 @@
 import { Request, Response } from 'express'
-import { EpicGameFetcher } from "../modules/fetchers/EpicGameFetcher.js";
-import { EpicFreeResponseFormatter } from "../modules/responseFormatters/EpicFreeResponseFormatter.js";
-import { EpicDiscountResponseFormatter } from "../modules/responseFormatters/EpicDiscountResponseFormatter.js";
+import fs from "fs";
+
+import { JsonFiles } from '../utils/jsonFiles.js';
 
 class EpicController {
-  private fetcher = new EpicGameFetcher();
-
   freeGames = async (req: Request, res: Response) => {
     try {
-      const games = await this.fetcher.getFreeGames(new EpicFreeResponseFormatter());
+      const data = fs.readFileSync("data/" + JsonFiles.EpicFree, "utf8");
+      const games = JSON.parse(data);
       return res.status(200).json(games);
     } catch (error) {
-      console.error("Error fetching free games:", error);
       res.status(500).json({ error: "Erro ao buscar os jogos grátis." });
     }
   };
 
   discountedGames = async (req: Request, res: Response) => {
     try {
-      const games = await this.fetcher.getGamesInPromotion(new EpicDiscountResponseFormatter());
+      const data = fs.readFileSync("data/" + JsonFiles.EpicPromotions, "utf8");
+      const games = JSON.parse(data);
       return res.status(200).json(games);
     } catch (error) {
       console.error("Error:", error);
