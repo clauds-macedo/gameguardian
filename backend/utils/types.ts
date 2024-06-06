@@ -8,6 +8,12 @@ export interface ISafeObject {
   config: AnyObject;
 }
 
+interface platforms {
+  windows: boolean,
+  macOs: boolean,
+  linux: boolean,
+}
+
 export interface GameResponse {
   title: string;
   description: string;
@@ -18,7 +24,10 @@ export interface GameResponse {
   discountedPrice: string | undefined;
   discountPercent: string | undefined;
   link: string;
-  genres?: string[];
+  genres: string[];
+  platforms: platforms,
+  releaseDate: string,
+  screenshots: string[],
 };
 
 export interface IGameInfo {

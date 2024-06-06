@@ -69,5 +69,4 @@ export class SteamGameFetcher implements GameFetcher {
   getFreeGames = async () => {
     return []
   }
-
 }

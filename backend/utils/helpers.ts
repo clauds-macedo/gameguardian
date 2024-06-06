@@ -65,7 +65,7 @@ const buildEpicGenresUrl = (offerId: string, sandboxId: string) => {
   return url;
 }
 
-export const getEpicGenres = async (offerId: string, namespace: string): Promise<string[]> => {
+export const getEpicGenresAndPlatforms = async (offerId: string, namespace: string) => {
   const response = await axios.get(
     buildEpicGenresUrl(offerId, namespace), {
     headers: {
@@ -75,7 +75,13 @@ export const getEpicGenres = async (offerId: string, namespace: string): Promise
   });
 
   const { catalogOffer } = response.data.data.Catalog;
-  return catalogOffer.tags
+  const genres = catalogOffer.tags
     .filter((tag: any) => tag.groupName === "genre")
-    .map((tag: any) => tag.name)
+    .map((tag: any) => tag.name);
+
+  const platforms = catalogOffer.tags
+    .filter((tag: any) => tag.groupName === "platform")
+    .map((tag: any) => tag.name);
+
+  return { genres, platforms };
 }
