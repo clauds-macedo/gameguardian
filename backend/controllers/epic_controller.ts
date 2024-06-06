@@ -1,9 +1,7 @@
-import axios from "axios";
 import { Request, Response } from 'express'
 import { EpicGameFetcher } from "../modules/fetchers/EpicGameFetcher.js";
 import { EpicFreeResponseFormatter } from "../modules/responseFormatters/EpicFreeResponseFormatter.js";
 import { EpicDiscountResponseFormatter } from "../modules/responseFormatters/EpicDiscountResponseFormatter.js";
-// import { ref } from "../config/firebase.js";
 
 class EpicController {
   private fetcher = new EpicGameFetcher();
