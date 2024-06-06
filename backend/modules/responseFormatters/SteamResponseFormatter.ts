@@ -29,7 +29,8 @@ export class SteamResponseFormatter implements ResponseFormatter {
             linux: data.platforms.linux,
             windows: data.platforms.windows,
             macOs: data.platforms.mac,
-          }
+          },
+          releaseDate: data.release_date.date,
         };
       })
     }

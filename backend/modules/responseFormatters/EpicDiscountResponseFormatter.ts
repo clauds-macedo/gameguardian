@@ -32,7 +32,8 @@ export class EpicDiscountResponseFormatter implements ResponseFormatter {
             windows: extraInfo[idx].platforms.includes("Windows"),
             linux: extraInfo[idx].platforms.includes("Linux"),
             macOs: extraInfo[idx].platforms.includes("Mac OS"),
-          }
+          },
+          releaseDate: game.releaseDate,
         }
       });
     }
