@@ -1,4 +1,4 @@
-import type { RemoteConfigKeys } from '../../global/types';
+import type { RemoteConfigKeys } from '@/infra/global/types';
 import type { RemoteConfigValue } from '../entities/remote-config';
 
 export interface IRemoteConfigRepository {
