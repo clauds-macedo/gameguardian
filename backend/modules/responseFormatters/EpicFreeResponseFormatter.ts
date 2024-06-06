@@ -25,8 +25,9 @@ export class EpicFreeResponseFormatter implements ResponseFormatter {
         discountPercent: "100",
         link: `https://store.epicgames.com/pt-BR/${game.productSlug}`,
         thumbnail: game.keyImages.find(
-          (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
-        ).url,
+          (img: any) => img.type === "Thumbnail" ||
+            img.type === "OfferImageWide" ||
+            img.type === "OfferImageTall").url,
         genres: extraInfo[idx].genres,
         platforms: {
           windows: extraInfo[idx].platforms.includes("Windows"),
@@ -34,6 +35,9 @@ export class EpicFreeResponseFormatter implements ResponseFormatter {
           macOs: extraInfo[idx].platforms.includes("Mac OS"),
         },
         releaseDate: game.releaseDate,
+        screenshots: game.keyImages
+          .filter((img: any) => img.type === "featuredMedia")
+          .map((img: any) => img.url),
       }));
     }
     return games;

@@ -25,8 +25,9 @@ export class EpicDiscountResponseFormatter implements ResponseFormatter {
           discountPercent: String(this.getDiscountPercentage(game.price.totalPrice)),
           link: `https://store.epicgames.com/pt-BR/browse?q=${game.title}&sortBy=relevancy&sortDir=DESC&count=40`,
           thumbnail: game.keyImages.find(
-            (img: any) => img.type === "OfferImageWide" || img.type === "OfferImageTall"
-          ).url,
+            (img: any) => img.type === "Thumbnail" ||
+              img.type === "OfferImageTall"
+              || img.type === "OfferImageWide").url,
           genres: extraInfo[idx].genres,
           platforms: {
             windows: extraInfo[idx].platforms.includes("Windows"),
@@ -34,6 +35,7 @@ export class EpicDiscountResponseFormatter implements ResponseFormatter {
             macOs: extraInfo[idx].platforms.includes("Mac OS"),
           },
           releaseDate: game.releaseDate,
+          screenshots: game.keyImages.map((img: any) => img.url),
         }
       });
     }

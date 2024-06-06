@@ -31,6 +31,7 @@ export class SteamResponseFormatter implements ResponseFormatter {
             macOs: data.platforms.mac,
           },
           releaseDate: data.release_date.date,
+          screenshots: data.screenshots.map((img: any) => img.path_full),
         };
       })
     }

@@ -27,6 +27,7 @@ export interface GameResponse {
   genres: string[];
   platforms: platforms,
   releaseDate: string,
+  screenshots: string[],
 };
 
 export interface IGameInfo {
