@@ -23,7 +23,7 @@ export class EpicFreeResponseFormatter implements ResponseFormatter {
         originalPrice: game.price.totalPrice.fmtPrice.originalPrice,
         discountedPrice: game.price.totalPrice.fmtPrice.discountPrice,
         discountPercent: "100",
-        link: `https://store.epicgames.com/pt-BR/${game.productSlug}`,
+        link: `https://store.epicgames.com/pt-BR/p/${game.productSlug}`,
         thumbnail: game.keyImages.find(
           (img: any) => img.type === "Thumbnail" ||
             img.type === "OfferImageWide" ||

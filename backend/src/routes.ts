@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import specialsRouter from "../routes/specials";
-import epicRouter from "../routes/epic";
-import steamRouter from "../routes/steam";
-import newsRouter from "../routes/news";
+import specialsRouter from "./routes/specials";
+import epicRouter from "./routes/epic";
+import steamRouter from "./routes/steam";
+import newsRouter from "./routes/news";
 
 const routes = Router();
 

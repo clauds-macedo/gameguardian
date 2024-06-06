@@ -133,3 +133,4 @@ yarn.lock
 
 # Files
 serviceAccountKey.ts
+data/

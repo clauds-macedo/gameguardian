@@ -25,8 +25,5 @@ export class EpicGameFetcher implements GameFetcher {
 
   getPromotionsByDeveloper = async () => {
     return []
-
   }
-
-
 }
