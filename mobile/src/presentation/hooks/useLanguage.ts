@@ -1,6 +1,5 @@
-import strings from "@infra/global/strings";
-import { useLanguageStore } from "../../stores/language";
-
+import { useLanguageStore } from '@/stores/language';
+import strings from '@infra/global/strings';
 
 const useLanguage = () => {
   const { language } = useLanguageStore();

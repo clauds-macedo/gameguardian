@@ -1,6 +1,11 @@
 import { RemoteConfigValue } from '@/domain/entities/remote-config';
 import type { FirebaseRemoteConfigTypes } from '@react-native-firebase/remote-config';
 
+export interface IRemoteConfigValueTransformer {
+  asString(): string;
+  asArray(): unknown[];
+}
+
 export class RemoteConfigAdapter extends RemoteConfigValue {
   constructor(adaptee: FirebaseRemoteConfigTypes.ConfigValue) {
     super(adaptee.asString());

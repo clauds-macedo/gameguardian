@@ -15,14 +15,11 @@ import {
 } from './styles';
 
 const Login: React.FC = () => {
-  // Hooks
   const { languageStrings } = useLanguage();
   const { navigate } = useAppRoute().navigation;
 
-  // States
   const [login, setLogin] = useState({ email: '', password: '' });
 
-  // Event handlers
   const handleEmailChange = (email: string) => {
     setLogin((prev) => ({ ...prev, email }));
   };
@@ -31,7 +28,6 @@ const Login: React.FC = () => {
     setLogin((prev) => ({ ...prev, password }));
   };
 
-  // Render
   return (
     <Container>
       <Circles sideX="left" sideY="top" />

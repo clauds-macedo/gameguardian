@@ -3,7 +3,7 @@ export class RemoteConfigValue {
     private remoteConfigValue: string | number | Record<string, unknown>
   ) {}
 
-  getRemoteConfigValue(): string | number | Record<string, unknown> {
+  protected getRemoteConfigValue(): string | number | Record<string, unknown> {
     return this.remoteConfigValue;
   }
 }
