@@ -1,6 +1,4 @@
 export class OfflineDatabase {
-  constructor() {}
-
   public hasValidKey(key: string) {
     if (key[0] === '@') {
       return true;

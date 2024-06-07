@@ -1,7 +1,8 @@
-import { MMKV as MMKVStorage } from 'react-native-mmkv';
+import {
+  offlineDatabaseReadUseCase,
+  offlineDatabaseSaveUseCase,
+} from '@/data/usecases/offlineDatabaseUseCase';
 import { create } from 'zustand';
-
-const MMKV = new MMKVStorage();
 
 type LanguageStore = {
   language: 'pt' | 'en';
@@ -9,9 +10,16 @@ type LanguageStore = {
 };
 
 export const useLanguageStore = create<LanguageStore>((set) => ({
-  language: (MMKV.getString('@language') as LanguageStore['language']) ?? 'pt',
+  language:
+    (offlineDatabaseReadUseCase.execute(
+      '@language',
+      'string'
+    ) as LanguageStore['language']) ?? 'pt',
   setLanguage: (newLanguage: 'pt' | 'en') => {
-    MMKV.set('@language', newLanguage);
+    offlineDatabaseSaveUseCase.execute({
+      key: '@language',
+      value: newLanguage,
+    });
     set(() => ({ language: newLanguage }));
   },
 }));

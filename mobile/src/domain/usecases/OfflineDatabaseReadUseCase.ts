@@ -5,6 +5,6 @@ export class OfflineDatabaseReadUseCase {
   constructor(private offlineDatabaseRepository: IOfflineDatabaseRepository) {}
 
   execute(key: string, as: OfflineDatabaseValueTypeParams) {
-    this.offlineDatabaseRepository.read(key, as);
+    return this.offlineDatabaseRepository.read(key, as);
   }
 }
