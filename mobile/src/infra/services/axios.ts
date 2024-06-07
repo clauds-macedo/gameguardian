@@ -1,8 +1,7 @@
-import { API_URL } from '@env';
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: API_URL,
+  baseURL: 'http://192.168.0.103:3000',
   headers: {
     'Content-Type': 'application/json',
   },

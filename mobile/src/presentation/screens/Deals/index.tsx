@@ -1,14 +1,14 @@
 import React from 'react';
 import { FlatList } from 'react-native';
+import { gameClicksUseCase } from '../../../data/usecases/gameClicksUseCase';
+import useLanguage from '../../../presentation/hooks/useLanguage';
 import { Card } from '../../components/Card';
 import GeneralScreenContainer from '../../components/GeneralScreenContainer';
-import useLanguage from '../../../presentation/hooks/useLanguage';
+import PageTitle from '../../components/PageTitle';
 import useAppRoute from '../../routes/hooks/useAppRoute';
 import { Circles } from '../Login/components/Circles';
 import { useFetchGames } from './hooks/useFetchGames';
 import { getSubtitle } from './utils';
-import { gameClicksUseCase } from '../../../data/usecases/gameClicksUseCase';
-import PageTitle from '../../components/PageTitle';
 
 const Deals = () => {
   const { languageStrings } = useLanguage();

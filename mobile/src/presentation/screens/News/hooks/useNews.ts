@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { ICard } from '../components/Card/types';
 import { newsUseCase } from '../../../../data/usecases/newsUseCase';
+import type { ICard } from '../components/Card/types';
 
 export const useNews = () => {
   const [news, setNews] = useState<ICard[]>([] as ICard[]);

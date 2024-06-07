@@ -15,7 +15,7 @@ export const Card: React.FC<CardProps> = ({
   discountedPrice,
   originalPrice,
   title,
-  link,
+  thumbnail,
   mb,
   mt,
   onCardPress,
@@ -25,7 +25,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <Container mb={mb} mt={mt}>
       <ButtonContainer activeOpacity={0.8} onPress={onCardPress}>
-        <StyledImage source={{ uri: link }} />
+        <StyledImage source={{ uri: thumbnail }} />
         <TextContainer>
           <Title>{title}</Title>
           <OldPrice>{`${currency} ${originalPrice}`}</OldPrice>

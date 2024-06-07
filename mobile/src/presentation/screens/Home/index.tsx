@@ -1,8 +1,8 @@
 import React from 'react';
 import useLanguage from '../../../presentation/hooks/useLanguage';
+import PageTitle from '../../components/PageTitle';
 import { TopTabNavigation } from '../../routes/TopNavigation';
 import { Container } from './styles';
-import PageTitle from '../../components/PageTitle';
 
 const Home: React.FC = () => {
   const { languageStrings } = useLanguage();

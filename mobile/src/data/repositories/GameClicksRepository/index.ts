@@ -12,6 +12,10 @@ export class GameClicksRepository
     super(collection);
   }
 
+  async readClicks() {
+    return this.read(currentDate);
+  }
+
   async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
     const gameClicks = await this.read(currentDate);

@@ -7,4 +7,8 @@ export class GameClicksUseCase {
   async register(requestDTO: IGameClicksDTO) {
     return this.gameClicksRepository.register(requestDTO);
   }
+
+  async readClicks() {
+    this.gameClicksRepository.readClicks();
+  }
 }

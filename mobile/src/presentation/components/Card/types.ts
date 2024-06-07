@@ -1,5 +1,5 @@
 export interface CardProps {
-  link: string;
+  thumbnail: string;
   title: string;
   originalPrice: string;
   discountedPrice: string;
