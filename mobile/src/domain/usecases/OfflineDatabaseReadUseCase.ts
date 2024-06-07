@@ -4,7 +4,7 @@ import type { IOfflineDatabaseRepository } from '../repositories/IOfflineDatabas
 export class OfflineDatabaseReadUseCase {
   constructor(private offlineDatabaseRepository: IOfflineDatabaseRepository) {}
 
-  read(key: string, as: OfflineDatabaseValueTypeParams) {
+  execute(key: string, as: OfflineDatabaseValueTypeParams) {
     this.offlineDatabaseRepository.read(key, as);
   }
 }

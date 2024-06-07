@@ -3,7 +3,7 @@ import type { IOfflineDatabaseRepository } from '../repositories/IOfflineDatabas
 export class OfflineDatabaseDeleteUseCase {
   constructor(private offlineDatabaseRepository: IOfflineDatabaseRepository) {}
 
-  delete(key: string) {
+  execute(key: string) {
     this.offlineDatabaseRepository.delete(key);
   }
 }

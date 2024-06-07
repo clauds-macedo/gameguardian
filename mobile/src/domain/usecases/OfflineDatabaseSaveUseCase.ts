@@ -4,7 +4,7 @@ import type { IOfflineDatabaseRepository } from '../repositories/IOfflineDatabas
 export class OfflineDatabaseSaveUseCase {
   constructor(private offlineDatabaseRepository: IOfflineDatabaseRepository) {}
 
-  save(data: OfflineDatabaseDTO) {
+  execute(data: OfflineDatabaseDTO) {
     this.offlineDatabaseRepository.save(data);
   }
 }
