@@ -33,6 +33,9 @@ export class MMKVAdapter extends OfflineDatabase {
   }
 
   save({ key, value }: OfflineDatabaseDTO) {
+    if (!this.hasValidKey(key)) {
+      return;
+    }
     this.adaptee.set(key, value);
   }
 }
