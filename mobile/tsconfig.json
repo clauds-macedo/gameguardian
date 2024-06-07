@@ -12,7 +12,7 @@
       "@infra/*": ["./src/infra/*"],
       "@data/*": ["./src/data/*"],
       "@store/*": ["./src/store/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["src/infra/services/*"],
       "@utils/*": ["./src/utils/*"]
     }
   }

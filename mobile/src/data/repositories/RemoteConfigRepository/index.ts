@@ -14,5 +14,3 @@ export class RemoteConfigRepository implements IRemoteConfigRepository {
     return new RemoteConfigAdapter(remoteConfigValue);
   }
 }
-
-// {_source: "djasiojdioasj", metadata: j8912dj892jd8921jsd}

@@ -8,6 +8,10 @@ export class GameClicksRepository
   extends DatabaseRepository<GameClicks>
   implements IGameClicksRepository
 {
+  constructor(collection: string) {
+    super(collection);
+  }
+
   async register(requestDTO: IGameClicksDTO): Promise<void> {
     const { doc } = requestDTO;
     const gameClicks = await this.read(currentDate);
